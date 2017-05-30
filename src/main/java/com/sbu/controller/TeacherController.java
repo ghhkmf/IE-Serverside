@@ -6,22 +6,18 @@
 package com.sbu.controller;
 import com.dao.entity.Lesson;
 import com.dao.entity.Term;
-import com.dao.entity.Termlessonteacher;
 import com.sbu.controller.model.CourseModel;
-import com.sbu.controller.model.TermLessonTeacherModel;
 import com.sbu.service.impl.TeacherManagerImpl;
 import com.sbu.service.impl.UserManagerImpl;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -92,22 +88,41 @@ public class TeacherController {
         //////////////////////////////////
 
            //show cource   
+
+    /**
+     *
+     * @param session
+     * @param termid
+     * @param model
+     * @return
+     */
         
-        @RequestMapping(value = "showCourse", method = RequestMethod.POST)
-	public @ResponseBody String   showCourse(HttpSession session , String termid , Model model ) {
+        @RequestMapping(value = "showCourse", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody List<CourseModel> showCourse(HttpSession session , String termid , Model model ) {
                 String userCode = ""; 
+                System.out.print("termid here"+termid);
                 userCode = session.getAttribute("userCode").toString();
                 Integer userCodeInt = Integer.parseInt(userCode);
                 Integer termCodeInt =  Integer.parseInt(termid);
-
-                //System.out.println("termid" + termid.toString());
-                List<Lesson> lesson = teacherManagerImpl.findTermLessonTeacher( termCodeInt , userCodeInt);                
-		//model.addAttribute("lessonlist", lesson);            
-               Lesson response = lesson.get(0);
-
                 
-               System.out.println("unitttttttttttttt");
-                    return  "me";  // "/CoursesTeacher" ; // "me" ; //  "/CoursesTeacher";
+                //System.out.println("termid" + termid.toString());
+                List<Lesson> lesson = teacherManagerImpl.findTermLessonTeacher( termCodeInt , userCodeInt); 
+                List<CourseModel> courses = new ArrayList<CourseModel>();
+                for(int i=0; i<lesson.size(); i++)
+                {
+                    Lesson l = lesson.get(i);
+                    CourseModel temp = new CourseModel();
+                    temp.setCode(l.getCode());
+                    temp.setId(l.getId());
+                    temp.setName(l.getName());
+                    temp.setType(l.getType());
+                    temp.setUnit(l.getUnit());
+                    courses.add(temp);
+                    
+                }
+                               
+
+                return  courses;  // "/CoursesTeacher" ; // "me" ; //  "/CoursesTeacher";
 	}
                 
          ///////////////////////////////////////////////
