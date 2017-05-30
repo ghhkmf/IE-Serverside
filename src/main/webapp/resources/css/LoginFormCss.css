@@ -1,0 +1,130 @@
+body{
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.FormLogin{
+    display: none;
+    position: fixed;
+    width: 29%;
+    padding: 2%;
+    margin: 8% 34%;
+    background-color: #acc9d3;
+}
+
+
+form {
+    border: 3px solid #f1f1f1;
+    direction: rtl;
+    width: 98%;
+    height: 91%;
+    margin: -8px;
+    padding: 8px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/*button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}*/
+
+.cancelbtn {
+    background-color: #e16e69  !important;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 6%;
+    height: auto;
+}
+#cont{
+
+    height: 85px;
+}
+
+span.psw {
+    /*    float: right;*/
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 380px) {
+
+    #FormContainer{
+        width: 200px;
+    }
+
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+
+.loginbtn , .cancelbtn {
+    background: url(https://dh3vbjnk0bnfa.cloudfront.net/static/centralauth/images/btn-login.png) no-repeat 5px 5px #87af89;
+    width: 100%;
+    /* height: 43%; */
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 10px 0px;
+    margin: 8px 0;
+    /* padding: 10px 20px 10px 0;
+    margin: 8px 0;
+   /* padding:10px 20px 10px 0;*/
+    color:White;
+    font-size:14px;
+    text-align:center;
+    text-indent:40px;
+    display:block;
+
+    /* Animations: */
+    -webkit-transition-timing-function: ease-in-out;
+    -webkit-transition-duration: .4s;
+    -webkit-transition-property: all;
+
+    -moz-transition-timing-function: ease-in-out;
+    -moz-transition-duration: .4s;
+    -moz-transition-property: all;
+}
+
+.loginbtn:hover , .cancelbtn:hover {
+    background-image: url('https://dh3vbjnk0bnfa.cloudfront.net/static/centralauth/images/btn-login-hover.png');
+    background-position: 65px 5px;
+    text-indent: 20px;
+}
+
+

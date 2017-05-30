@@ -1,0 +1,69 @@
+body{
+
+    margin: 0;
+    padding: 0;
+
+}
+
+
+#listWrapper{
+
+    background-color: rgba(76, 175, 80, 0.64);
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    top: 0;
+    left: 0;
+    position: fixed;
+    direction: rtl;
+
+
+}
+
+
+#searchFilters{
+
+    background-color: #f44336;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    box-sizing: border-box;
+    border: solid 1px #2a78f6;
+
+
+}
+
+#searchFilters table{
+
+    padding: 0;
+    margin: 0 auto;
+    border: solid 1px #222222;
+    background-color: coral;
+    width:70%;
+
+}
+
+
+#searchFilters table td{
+
+    padding: 0;
+    width:auto ;
+
+
+}
+
+#searchFilters table td select{
+
+
+
+
+}
+
+
+
+
+
+

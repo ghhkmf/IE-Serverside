@@ -1,0 +1,18 @@
+
+.pannelClass {
+    background-color: rgba(163, 198, 191, 0.74);
+    width: 19%;
+    height: auto;
+    direction: rtl;
+    /* padding-right: 6%; */
+    margin-left: 81%;
+    /* top: 11%; */
+    /* padding-top: 437px; */
+    padding-bottom: -23%;
+    /* top: 10%; */
+    /* margin-top: 49px; */
+    position: fixed;
+    bottom: 0;
+    top: 0;
+}
+
