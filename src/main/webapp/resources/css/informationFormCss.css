@@ -1,0 +1,248 @@
+body{
+
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+
+
+}
+
+#FormContainer{
+
+    width: 700px;
+    height: 872px;
+    padding: 0;
+    margin: auto;
+    /*background-color: rgba(211, 201, 170, 0.59);*/
+
+
+
+
+}
+
+
+form {
+    border: 3px solid #a8b3b9;
+    direction: rtl;
+/*    width: 90%;
+    height: 90%;*/
+    width: 100%;
+    height: 64%;
+    margin: 0;
+    padding: 0;
+    border-radius: 30px;
+    position: relative;
+}
+
+
+#cont{
+
+    width:36%;
+    position: absolute;
+    bottom: 6px;
+    left: 30%;
+
+
+}
+
+
+input[type=email] , input[type=tel] , input[type=number]{
+
+    direction: ltr;
+    float: left;
+
+}
+
+
+#cont input{
+
+    width: 32%;
+    border: double 1px #a8b3b9;
+    padding: 16px;
+    height: auto;
+
+
+}
+
+#cont input:hover{
+
+    opacity: 0.8;
+
+}
+
+
+#cont input[type=submit]{
+
+    background-color: #6faf7d;
+
+}
+
+#cont input[type=reset]{
+
+    background-color: #a8b3b9;
+
+}
+
+#cont input[type=button]{
+
+    background-color: #f4706a;
+
+}
+
+select{
+
+    width:100%;
+    border: none;
+    background-color: inherit;
+
+}
+table{
+
+    width: 85%;
+    height: 50%;
+    overflow-x:auto;
+    border: double 1px #a8b3b9;
+
+}
+
+
+
+table input{
+
+    border: none;
+    background-color: inherit;
+    outline: none;
+
+
+}
+
+
+tr{
+
+    height: 10%;
+
+
+}
+
+td{
+    padding: 1px;
+
+}
+
+
+
+
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+td:nth-child(even){
+
+    padding: 0;
+
+
+}
+
+/*
+input {
+    width: 50%;
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+
+}
+
+input[type=button]:hover ,  input[type=reset]:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    float: left;
+}
+
+input[type=reset]{
+
+    float: right;
+}
+*/
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+
+}
+
+img.avatar {
+/*    width: 40%;*/
+    width: 23%;
+    border-radius: 50%;
+    border: double 6px #a8b3b9;
+}
+
+.container {
+    padding: 16px;
+    height: auto;
+}
+
+
+
+
+@media screen and (max-width: 650px) {
+
+   #FormContainer{
+
+       width: 500px ;
+
+   }
+
+    #cont{
+
+        width:60%;
+        left:20%;
+
+
+    }
+
+
+
+
+}
+
+
+@media screen and (max-width: 400px) {
+
+    #FormContainer{
+
+        width: 350px ;
+
+    }
+
+    #cont{
+
+        width: 80%;
+        left: 11%;
+        bottom: 9%;
+
+
+    }
+
+
+
+
+}

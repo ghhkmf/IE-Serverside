@@ -1,0 +1,263 @@
+#WrapperTableOfNewClass{
+
+    background-color: #d3c9aa;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: solid 2px #393939; */
+
+
+}
+
+
+.WrapperHead{
+
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+
+
+}
+
+
+#WrapperTableOfNewClass form{
+
+    margin: 0 auto;
+    height: auto;
+    width: 90%;
+    background-color: #fffee6;
+    direction: rtl;
+    padding: 2%;
+    border: solid 3px #a8b3b9;
+}
+
+
+#WrapperTableOfNewClass form table{
+
+    margin: 0 auto;
+    width: 80%;
+    padding: 15px;
+    border: none;
+    box-sizing: border-box;
+
+}
+
+
+
+#WrapperTableOfNewClass form table caption{
+
+    background-color: rgb(175, 170, 152);
+    width: 100%;
+    padding:1%;
+    margin: 0;
+    box-sizing: border-box;
+    height: auto;
+
+
+
+}
+
+
+#WrapperTableOfNewClass form table tr{
+
+    margin-bottom: 6px;
+
+
+}
+
+
+
+
+
+
+
+
+#WrapperTableOfNewClass form table  td{
+
+    width:40%;
+    height: auto;
+    padding:0 1px 0 0 ;
+    margin:0;
+    background-color: rgba(215, 208, 153, 0.51);
+
+
+}
+
+
+
+#WrapperTableOfNewClass form table  td:first-of-type{
+
+    text-align: left;
+
+}
+
+
+#WrapperTableOfNewClass form table  td:last-of-type{
+
+    text-align: right;
+
+}
+
+
+
+#WrapperTableOfNewClass form table  td label  {
+
+           width: 10px;
+           height: 20px;
+
+}
+
+
+#WrapperTableOfNewClass form table  td input[type=text]{
+
+    width: 85px;
+    height: 20px;
+    text-align: center;
+}
+
+
+
+
+
+
+#WrapperTableOfNewClass form table  td input[type=number]{
+
+    width: 70px;
+    height: 20px;
+}
+
+
+
+#WrapperTableOfNewClass form table  td input[type=radio]{
+
+    width: 21px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    margin-top: -1px;
+    vertical-align: middle;
+}
+
+
+#WrapperTableOfNewClass form table  td input[type=date] ,#WrapperTableOfNewClass form table  td input[type=time]{
+
+    width: 140px;
+    height: 40px;
+    text-align: inherit;
+}
+
+
+
+
+#WrapperTableOfNewClass form table  td select  {
+
+    width: auto;
+    height: 40px;
+    font-size: initial;
+}
+
+
+
+
+#WrapperTableOfNewClass form table  td select option {
+
+    text-align-last:center;
+
+}
+.buttons{
+
+    margin: 0 auto;
+    width: 50%;
+    height: auto;
+    padding: 0;
+
+}
+
+
+#WrapperTableOfNewClass form input[type=submit] , #WrapperTableOfNewClass form input[type=button] , #WrapperTableOfNewClass form input[type=reset]{
+
+    border: none;
+    width: 24%;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+#WrapperTableOfNewClass #nextBackArrows{
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    /* padding-top: 13px; */
+    border: none;
+    height: 60px;
+    background-color: #7f8d94;
+    box-sizing: border-box;
+}
+
+
+
+
+#WrapperTableOfNewClass #nextBackArrows img{
+
+    width: 46px;
+    height: 41px;
+    cursor:pointer;
+
+}
+
+
+
+#WrapperTableOfNewClass #nextBackArrows img:hover{
+
+    opacity: 0.8;
+
+}
+
+#WrapperTableOfNewClass #nextBackArrows #nextArrow{
+
+    float: right;
+
+}
+
+#WrapperTableOfNewClass #nextBackArrows #backArrow{
+
+    float:left;
+
+}
+
+
+
+
+@media screen and (max-width: 700px){
+
+
+    #WrapperTableOfNewClass label ,#WrapperTableOfNewClass select{
+
+        font-size: small;
+
+    }
+
+
+}
+
+
+
+@media screen and (max-width: 450px){
+
+
+    #WrapperTableOfNewClass label ,#WrapperTableOfNewClass select{
+
+        font-size: x-small;
+
+    }
+
+    #WrapperTableOfNewClass select{
+
+        width: 125px !important;
+        font-size: small !important;
+    }
+}

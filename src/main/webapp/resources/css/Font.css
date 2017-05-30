@@ -1,0 +1,28 @@
+
+*{
+  font-family: "BNazanin" !important;
+
+
+}
+
+  @font-face {
+  font-family: 'BNazanin';
+  src: url('BNazanin.eot');
+  src: url('BNazanin.eot?#iefix')format('embedded-opentype'),
+   url('BNazanin.woff') format('woff'),
+   url('BNazanin.ttf') format('truetype');
+
+   font-weight: normal;
+   font-style: normal;
+}
+
+/*
+@font-face {
+    font-family: "yekan";
+    src:url(sansation_light.woff);
+
+}
+
+class1 {
+    font-family: "yekan", Tahoma
+}*/

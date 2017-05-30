@@ -1,0 +1,463 @@
+body{
+
+    margin:0;
+    padding:0;
+
+}
+
+.WrapperTableInfo{
+
+    padding: 0;
+    box-sizing: content-box;
+    border: solid 4px #a8b3b9;
+    width: 74%;
+    background-color: #ededea;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+.WrapperTableInfo form{
+
+    /*
+    !* margin: 0 auto; *!
+    !* width: 90%; *!
+    !* height: auto; *!
+    position: relative;
+    padding: 19px;
+    !* padding: 0; *!
+    box-sizing: content-box;
+    border: solid 4px #f44336;
+    !* width: 80%; *!
+    background-color: darkorange;
+    height: auto;
+    margin: 0 auto;
+    */
+
+    margin: 20px auto;
+    width: 90%;
+    height: auto;
+    position: relative;
+
+
+}
+
+.WrapperTableInfo form table {
+
+    margin: 22px auto;
+    padding: 0;
+    /*    border: solid 2px #84825f;*/
+    border-radius: 10px;
+    direction: rtl;
+    /*    border-collapse: collapse;*/
+    width: 90%;
+
+}
+
+.WrapperTableInfo th , .WrapperTableInfo td{
+
+
+    border: solid 2px #9b986d;
+    text-align: center;
+    height: auto;
+    width: auto;
+
+}
+
+.WrapperTableInfo .removeRow{
+
+    color: #ff9697;
+    cursor:pointer;
+
+
+}
+
+.WrapperTableInfo #nextBackArrows{
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    /* padding-top: 13px; */
+    border: none;
+    height: 60px;
+    background-color: #7f8d94;
+    box-sizing: border-box;
+    cursor:pointer;
+}
+
+
+
+
+.WrapperTableInfo #nextBackArrows img{
+
+    width: 46px;
+    height: 41px;
+    cursor:pointer;
+
+}
+
+
+
+.WrapperTableInfo #nextBackArrows img:hover{
+
+   opacity: 0.8;
+
+}
+
+.WrapperTableInfo #nextBackArrows #nextArrow{
+
+    float: right;
+
+}
+
+
+.WrapperTableInfo #nextBackArrows #backArrow{
+
+    float:left;
+
+}
+
+
+.WrapperTableInfo th{
+    background-color: #9b986d;
+
+}
+
+
+
+.WrapperTableInfo tr{
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: auto;
+    width: auto;
+
+}
+
+
+.WrapperTableInfo table tr:nth-child(even){background-color: #e4eff1;
+}
+.WrapperTableInfo table tr:nth-child(odd){background-color: #fffee6;
+}
+
+
+.even{
+
+    background-color:  #e4eff1 !important;
+
+}
+
+
+.odd{
+
+    background-color: #fffee6 !important;
+
+}
+
+
+
+
+.WrapperTableInfo tr:hover{
+
+
+    background-color: #d9d194;
+
+
+}
+
+
+.WrapperTableInfo form input ,.WrapperTableInfo table select{
+
+    border: none;
+    background-color: inherit;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+
+
+
+
+}
+
+
+.WrapperTableInfo form #submitMarks{
+
+    width: 100px;
+    height: 35px;
+    background-color: #efbfbd;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    border: 0;
+    left: 40%;
+
+
+}
+
+
+
+
+
+.WrapperTableInfo form input[type=checkbox]{
+
+    width: 50%;
+    height: 50px;
+
+}
+
+
+.WrapperTableInfo .bottumOfFormAdd{
+
+    position: absolute;
+    bottom: -25px;
+    left: 35%;
+    margin: 2%;
+    padding: 4px;
+    box-sizing: border-box;
+    border: none;
+    /* background-color: #b0c6ca; */
+    width: 45%;
+    height: 40px;
+
+
+}
+
+.WrapperTableInfo .bottumOfFormAdd input{
+
+
+    padding: 0;
+    width: 91px;
+    height: 100%;
+
+}
+
+.WrapperTableInfo .bottumOfFormAdd input:hover{
+
+    border-right: solid 5px #928f86;
+    background-color: #928f86 !important;
+
+
+}
+
+
+
+
+.WrapperTableInfo .bottumOfFormAdd input[type=button]{
+
+    background-color: #f4706a;
+    cursor:pointer;
+    /*    float: right;*/
+}
+
+.WrapperTableInfo .bottumOfFormAdd input[type=submit]{
+
+    background-color: #6faf7d;
+    cursor:pointer;
+    /*    float: left;*/
+}
+
+.WrapperTableInfo #addRow{
+
+    font-size: xx-large;
+    cursor:pointer;
+    color: rgba(72, 173, 72, 0.72);
+    position: absolute;
+    bottom: 31px;
+    right: 46%;
+    background-color: #fffee6;
+    border: solid 2px rgba(155, 152, 109, 0.73);
+}
+
+
+
+.WrapperTableInfo table:first-of-type{
+
+    margin-bottom: 20px !important;
+}
+
+
+
+.moreInfoTr{
+
+  background-color: darkorchid;
+    display: none;
+
+
+}
+
+
+.moreInfoTr td div {
+
+    padding: 23px 0;
+    border: solid 6px #050e05;
+    margin: 0;
+    position: relative;
+
+
+}
+
+
+
+
+td.moreInfoTd{
+
+    height: 185px !important;
+    font-size: small;
+    display: none;
+
+}
+
+td.moreInfoTd div {
+    border: solid 5px;
+    height: 100%;
+    margin: 0;
+    padding: 9px 0 0 0;
+    box-sizing: border-box;
+    position: relative;
+
+}
+
+
+
+.closeBtn , .closeModal{
+
+
+    width: 25px;
+    height: 25px;
+    background-color: khaki;
+    color: #f44336;
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    border-radius: 14px;
+    text-align: center;
+    cursor: pointer;
+
+
+}
+
+#listWrapper .closeModal  {
+
+    top: 0;
+    right: 0;
+
+}
+
+
+.moreInfoButtonClass{
+
+    background-color: #bddebd !important;
+    width: 100px !important;
+    height: 31px !important;
+    margin: 7px 0 0 0 !important;
+    border: none;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.moreInfoButton {
+    font-weight:  inherit;
+}
+
+
+.moreInfoButtonClass:hover{
+
+    background-color: #768e75 !important;
+    padding-right: 2px;
+
+
+}
+
+
+
+@media screen and (max-width: 750px){
+
+    .WrapperTableInfo table , .WrapperTableInfo tbody{
+
+        height: auto;
+
+    }
+
+
+
+
+    .WrapperTableInfo tr , .WrapperTableInfo td{
+
+        display: block;
+        padding: 0;
+
+    }
+
+
+    .WrapperTableInfo tr {
+        border: none;
+        margin: 0 0 1em 0;
+        padding: 0.5em;
+         display: block;
+
+    }
+
+    .WrapperTableInfo thead{
+         display: none;
+
+     }
+
+    .WrapperTableInfo table input , .WrapperTableInfo table select{
+
+
+    width: 80%;
+    float: left;
+    padding: 6px;
+
+}
+
+    .WrapperTableInfo td{
+
+    height: 52px;
+    width: 100%;
+
+}
+
+    .WrapperTableInfo td[data-title]:before {
+
+        content: attr(data-title);
+        font-weight: bold;
+        display: inline-block;
+
+        float: right;
+        border-left: solid 1px #aaa26f;
+        font-size:x-small;
+        width: 20%;
+        height: 50px;
+        margin: 0;
+
+        padding: 14px;
+        box-sizing: border-box;
+
+    }
+
+
+    .moreInfoTr{
+
+
+        display: none !important;
+
+
+    }
+
+    .WrapperTableInfo table input[type=checkbox]{
+
+
+        margin: 0 0 0 35%;
+        width: 35px;
+    }
+
+
+    .moreInfoButtonClass{
+
+        float: none !important;
+
+    }
+}
