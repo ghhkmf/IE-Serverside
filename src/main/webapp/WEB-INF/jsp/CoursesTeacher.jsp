@@ -82,7 +82,7 @@ import="java.sql.*" %>
                 <td>
 
                     <label><b>ترم : </b></label>
-                    <select name="termsel" title="Term" id="termsel" >
+                    <select name="termsel" title="Term" id="termsel">
                         <option value="">ترم را انتخاب کنید</option>
                         <c:if test="${not empty termlist }">
                             <c:forEach items="${termlist}" var="item">  
@@ -117,7 +117,7 @@ import="java.sql.*" %>
 
     <%--<form:form action="#">--%>
 <h1 id='h22'> aaaaaaaaaaaaaaaaaaaaaaa </h1>
-        <table>
+        <table id="coursesTable" dir="rtl">
             <thead>
             <tr>
                 <th> <b>  نام درس   </b> </th>
@@ -130,8 +130,8 @@ import="java.sql.*" %>
             </thead>
             
             <tbody>
-                <c:if test="${not empty lessonlist}">
-                    <c:forEach items="${lessonlist}" var="item2"> 
+                <c:if test="${not empty courses}">
+                    <c:forEach items="${courses}" var="item2"> 
             <tr>
                    
                 <td    data-title="نام درس"> <c:out value="${item2.name}"> </c:out>"</td>
@@ -428,17 +428,38 @@ import="java.sql.*" %>
         $.ajax({
             url: "/Teacher/showCourse",
             type:'POST',
-            datatype : 'json',
+            dataType: 'json',
             data: {
                 termid: termid },
-            
             success: function (response) {
-                alert("ook");
-              //  document.getElementById("h22").innerHTML=response;
-  	     // alert("ajax worked response: ");
+                document.getElementById("h22").innerHTML="success";
+                var table = document.getElementById("coursesTable");
+
+                $.each(response, function() {
+                    var row = table.insertRow(-1);
+                    var name = row.insertCell(0);
+                    name.setAttribute("id", "name");
+
+                    var code = row.insertCell(1);
+                    code.setAttribute("id", "code");
+                    
+                    var type = row.insertCell(2);
+                    type.setAttribute("id", "type");
+
+                    var unit = row.insertCell(3);
+                    unit.setAttribute("id", "unit");
+
+                    name.innerHTML = this.name;
+                    code.innerHTML = this.code;
+                    type.innerHTML = this.type;
+                    unit.innerHTML = this.unit;
+
+                });
+  	     
   	    },
             error: function (error) {
-                ALESR("NOOOOO");
+                document.getElementById("h22").innerHTML="errror";
+
             }
         });
       
