@@ -54,6 +54,10 @@ public class Lesson implements Serializable {
     private String type;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lessonid")
     private Collection<Termlessonteacher> termlessonteacherCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lessoncode")
+    private Collection<Prelesson> prelessonCollection;
+    @OneToMany(mappedBy = "precode")
+    private Collection<Prelesson> prelessonCollection1;
 
     public Lesson() {
     }
@@ -117,6 +121,24 @@ public class Lesson implements Serializable {
 
     public void setTermlessonteacherCollection(Collection<Termlessonteacher> termlessonteacherCollection) {
         this.termlessonteacherCollection = termlessonteacherCollection;
+    }
+
+    @XmlTransient
+    public Collection<Prelesson> getPrelessonCollection() {
+        return prelessonCollection;
+    }
+
+    public void setPrelessonCollection(Collection<Prelesson> prelessonCollection) {
+        this.prelessonCollection = prelessonCollection;
+    }
+
+    @XmlTransient
+    public Collection<Prelesson> getPrelessonCollection1() {
+        return prelessonCollection1;
+    }
+
+    public void setPrelessonCollection1(Collection<Prelesson> prelessonCollection1) {
+        this.prelessonCollection1 = prelessonCollection1;
     }
 
     @Override
