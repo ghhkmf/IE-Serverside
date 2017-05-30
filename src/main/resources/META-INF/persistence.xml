@@ -39,6 +39,7 @@
         <class>com.dao.entity.Studenttermlessonteacher</class>
         <class>com.dao.entity.Lesson</class>
         <class>com.dao.entity.Termlessonteacher</class>
+        <class>com.dao.entity.Prelesson</class>	
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url"    value="jdbc:h2:tcp://localhost/~/IE" />
