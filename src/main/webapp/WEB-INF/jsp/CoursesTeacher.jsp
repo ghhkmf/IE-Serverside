@@ -74,6 +74,7 @@ import="java.sql.*" %>
 
 <div id="srchCont">
 
+    <h2 id="h222"> </h2>
     <form:form action="/Teacher/showCourse" method="POST" id="postForm">
 
         <table>
@@ -110,13 +111,17 @@ import="java.sql.*" %>
 <br><br><br><br><br>
 
 
-
+<h1 id='h22'>  </h1>
+<h1 id='h23'>  </h1>
+<h1 id='h24'>  </h1>
+<h1 id='h25'>  </h1>
 
 <div  class="WrapperTableInfo" >  
     <!--style="display: none;">-->
 
     <%--<form:form action="#">--%>
-<h1 id='h22'> aaaaaaaaaaaaaaaaaaaaaaa </h1>
+
+
         <table id="coursesTable" dir="rtl">
             <thead>
             <tr>
@@ -124,22 +129,22 @@ import="java.sql.*" %>
                 <th> <b> کد درس     </b> </th>
                 <th>  <b>  نوع درس  </b> </th>
                 <th> <b> تعداد واحد   </b></th>
-                <th> <b> جزییات کلاس  </b></th>
                 <th> <b> لیست دانشجویان  </b></th>
             </tr>
             </thead>
             
             <tbody>
-                <c:if test="${not empty courses}">
-                    <c:forEach items="${courses}" var="item2"> 
-            <tr>
+                <%--<c:if test="${not empty courses}">--%>
+                <%--<c:forEach items="${courses}" var="item2">--%> 
+<!--            <tr>
                    
-                <td    data-title="نام درس"> <c:out value="${item2.name}"> </c:out>"</td>
-                <td    data-title="کد درس">   <c:out value="${item2.code}"> </c:out>" </td>
-                <td   data-title="نوع درس">  <c:out value="${item2.type}"> </c:out>" </td>
-                <td   data-title="تعداد واحد">  <c:out value="${item2.unit}"> </c:out>" </td>
-                <td  data-title="لیست دانشجویان"> <input  type="button" class="moreInfoButtonClass showListBtn"  name="studentsList" title="لیست دانشجویان" value="لیست دانشجویان" > </td>
-                <td  data-title="جزییات کلاس "> <input type="button" class="moreInfoButtonClass moreInfoButtonClass" name="details" title="جزییات کلاس" value="جزییات کلاس"  > </td>
+                <td    data-title="نام درس">  </td>
+                <td    data-title="کد درس">  </td>
+                <td   data-title="نوع درس">  </td>
+                <td   data-title="تعداد واحد">  </td>
+                <td  data-title="لیست دانشجویان"> </td>
+                <td  data-title="جزییات کلاس "> </td>
+                <td  data-title="جزییات کلاس "> <input type="button" class=" moreInfoButtonClass" name="details" title="جزییات کلاس" value="جزییات کلاس"  > </td>
                 <td class="moreInfoTd close">
                     <div >
                         <span class="closeBtn "><b>&#10006;</b></span>
@@ -153,7 +158,7 @@ import="java.sql.*" %>
                         <span>ساعت 09:00 تا 12:00 </span>
                     </div>
                 </td>
-            </tr>
+            </tr>-->
 
 <!--            <tr class="moreInfoTr odd close">
                 <td colspan="6">
@@ -171,8 +176,8 @@ import="java.sql.*" %>
                     </div>
                 </td>
             </tr>-->
-               </c:forEach>
-            </c:if>
+               <%--</c:forEach>--%>
+            <%--</c:if>--%>
             
             </tbody>
 
@@ -180,15 +185,11 @@ import="java.sql.*" %>
 
     <%--</form:form>--%>
 
-
-
-
 </div>
 
 
 
-
-
+    
 <div  id="listWrapper" class="close" style="display: none;">
 
     <span class=" closeModal "><b>&#10006;</b></span>
@@ -420,8 +421,12 @@ import="java.sql.*" %>
 
 
     $(document).ready(function() {
-    var termid = null;
+        
+        
+    
       $('#postForm').submit(function (e) { 
+          
+          var termid = null;
       termid = $('#termsel').val();
         e.preventDefault();
         
@@ -432,7 +437,8 @@ import="java.sql.*" %>
             data: {
                 termid: termid },
             success: function (response) {
-                document.getElementById("h22").innerHTML="success";
+                $("#coursesTable").find("tr:gt(0)").remove();
+//                document.getElementById("h22").innerHTML="success";
                 var table = document.getElementById("coursesTable");
 
                 $.each(response, function() {
@@ -448,11 +454,19 @@ import="java.sql.*" %>
 
                     var unit = row.insertCell(3);
                     unit.setAttribute("id", "unit");
-
+                    
+                    var stdlist = row.insertCell(4);
+//                    stdlist.setAttribute("id", "stdlist");
+                    
                     name.innerHTML = this.name;
                     code.innerHTML = this.code;
                     type.innerHTML = this.type;
                     unit.innerHTML = this.unit;
+                    
+                    var b = document.createElement("button");
+                    b.innerHTML = "لیست دانشجویان";
+                    b.onclick= showList;
+                    stdlist.appendChild(b);
 
                 });
   	     
@@ -465,7 +479,35 @@ import="java.sql.*" %>
       
   });
 
+/////////////////////////////////////////////////
 
+     // function callAjax(e) { 
+      function showList(){
+         // e.preventDefault();
+          document.getElementById("h25").innerHTML="hiiiiiiiiiiii1";
+          var currentRow = $(this).closest("tr");
+          document.getElementById("h23").innerHTML="hiiiiiiiiiiii2";
+          var thisLessonId = $(currentRow).find('td:eq(1)').html();
+          document.getElementById("h24").innerHTML="hiiiiiiiiiiii3";
+          var  tid = $('#termsel').val();
+        //  document.getElementById("h25").innerHTML="hiiiiiiiiiiii4";
+        $.ajax({
+            url: "/Teacher/showStudents",
+            type:'POST',
+//            dataType: 'json',
+            data: {
+//                thisLessonId : thisLessonId ,
+                tid : tid },
+            success: function (response) {
+                document.getElementById("h22").innerHTML="sss";
+
+            },
+             error: function (response) {
+                document.getElementById("h22").innerHTML="errrrrr";
+
+            }
+        });
+      }
 
 
 
@@ -496,15 +538,16 @@ import="java.sql.*" %>
 
 
 
-//        $('.showListBtn').click(function (e) {
-//
+
+       
+//            document.getElementById("h23").innerHTML="hiiiiiiiiiiii2";
 //            e.preventDefault();
 //            $('#responseImg').fadeIn('slow').delay(5000).fadeOut('slow');
 //            $('body').css('overflow','hidden');
 //            $('#listWrapper').delay(6000).fadeIn('fast');
-//
-//
-//        });
+
+
+       
 
 
         $('.closeBtn').click(function () {
@@ -608,7 +651,6 @@ import="java.sql.*" %>
 
 
         });
-
 
 
 
