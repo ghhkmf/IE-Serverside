@@ -11,15 +11,18 @@ import com.sbu.controller.model.TeacherModel;
 
 import com.dao.entity.Student;
 import com.sbu.controller.model.StudentModel;
+import com.sbu.controller.model.StudenttermavgModel;
 import com.sbu.service.impl.UserManagerImpl;
 import com.sbu.service.impl.StudentManagerImpl;
 import com.sbu.service.impl.TeacherManagerImpl;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -47,6 +50,14 @@ public class StudentController {
        
       return "/studentInformation";
    }
+   
+    //show list of terms
+   @RequestMapping(value = "StudentSemesterInformation", method = RequestMethod.GET)
+   public String StudentSemesterInformation() {
+       
+      return "/StudentSemesterInformation";
+   }
+   
    
  
    ///////////////////////////////////////////
@@ -123,6 +134,18 @@ public class StudentController {
              else
                  return "redirect:/login";
 	}
-   
+   @RequestMapping(value = "loadSemestersInfo", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody List<StudenttermavgModel> loadSemestersInfo(HttpSession session , Model model ) {
+            System.out.println("com.sbu.controller.StudentController.loadSemestersInfo()");
+                String userCode = ""; 
+               // System.out.print("termid here"+termid);
+                userCode = session.getAttribute("userCode").toString();
+                Integer userCodeInt = Integer.parseInt(userCode);
+                List<StudenttermavgModel> semesterList = studentManagerImpl.findStudentSemesters(userCodeInt);
+                
+                System.out.println("com.sbu.controller.StudentController.loadSemestersInfo()");
+                System.out.println("list of semesters" + semesterList.toString());
+                return  semesterList; 
+	}
 
 }
