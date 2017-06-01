@@ -72,10 +72,10 @@ import="java.sql.*" %>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div  class="WrapperTableInfo" style="width: 80%; margin: 0 auto;" >
-
+    <h2 id="test">just for check</h2>
     <form:form action="#">
 
-        <table>
+        <table  id="semestersInfoTable">
 
             <thead>
 
@@ -94,77 +94,12 @@ import="java.sql.*" %>
 
             <tbody>
 
-            <tr>
-
-                <td    data-title="شماره ترم">  <input  type="text" name="TermId" title="شماره ترم"  value="ترم 1" readonly>  </td>
-
-                <td    data-title="نام ترم  ">  <input  type="text" name="TermName"  title="نام ترم" value="نیم سال اول 95-94" readonly>  </td>
-                <td    data-title=" تعداد کل واحد ">  <input  type="text" name="numOfUnits"  title="تعداد کل واحد" value="15" readonly>  </td>
-                <td    data-title="معدل ترم  ">  <input  type="text" name="average"  title="معدل ترم" value="19.50" readonly>  </td>
-                <td   data-title="مشاهده جزییات"><input type="button" class="moreInfoButtonClass showListBtn" name="details" title="مشاهده جزییات" value="جزییات"  ></td>
 
 
-            </tr>
-
-            <tr>
-
-                <td    data-title="شماره ترم">  <input  type="text" name="TermId" title="شماره ترم"  value="ترم 321" readonly>  </td>
-
-                <td    data-title="نام ترم  ">  <input  type="text" name="TermName"  title="نام ترم" value="نیم سال اول 95-94" readonly>  </td>
-                <td    data-title=" تعداد کل واحد ">  <input  type="text" name="numOfUnits"  title="تعداد کل واحد" value="15" readonly>  </td>
-                <td    data-title="معدل ترم  ">  <input  type="text" name="average"  title="معدل ترم" value="19.50" readonly>  </td>
-                <td   data-title="مشاهده جزییات"><input type="button" class="moreInfoButtonClass showListBtn" name="details" title="مشاهده جزییات" value="جزییات"  ></td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="شماره ترم">  <input  type="text" name="TermId" title="شماره ترم"  value="ترم 321" readonly>  </td>
-
-                <td    data-title="نام ترم  ">  <input  type="text" name="TermName"  title="نام ترم" value="نیم سال اول 95-94" readonly>  </td>
-                <td    data-title=" تعداد کل واحد ">  <input  type="text" name="numOfUnits"  title="تعداد کل واحد" value="15" readonly>  </td>
-                <td    data-title="معدل ترم  ">  <input  type="text" name="average"  title="معدل ترم" value="19.50" readonly>  </td>
-                <td   data-title="مشاهده جزییات"><input type="button" class="moreInfoButtonClass showListBtn" name="details" title="مشاهده جزییات" value="جزییات"  ></td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="شماره ترم">  <input  type="text" name="TermId" title="شماره ترم"  value="ترم 321" readonly>  </td>
-
-                <td    data-title="نام ترم  ">  <input  type="text" name="TermName"  title="نام ترم" value="نیم سال اول 95-94" readonly>  </td>
-                <td    data-title=" تعداد کل واحد ">  <input  type="text" name="numOfUnits"  title="تعداد کل واحد" value="15" readonly>  </td>
-                <td    data-title="معدل ترم  ">  <input  type="text" name="average"  title="معدل ترم" value="19.50" readonly>  </td>
-                <td   data-title="مشاهده جزییات"><input type="button" class="moreInfoButtonClass showListBtn" name="details" title="مشاهده جزییات" value="جزییات"  ></td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="شماره ترم">  <input  type="text" name="TermId" title="شماره ترم"  value="ترم 321" readonly>  </td>
-
-                <td    data-title="نام ترم  ">  <input  type="text" name="TermName"  title="نام ترم" value="نیم سال اول 95-94" readonly>  </td>
-                <td    data-title=" تعداد کل واحد ">  <input  type="text" name="numOfUnits"  title="تعداد کل واحد" value="15" readonly>  </td>
-                <td    data-title="معدل ترم  ">  <input  type="text" name="average"  title="معدل ترم" value="19.50" readonly>  </td>
-                <td   data-title="مشاهده جزییات"><input type="button" class="moreInfoButtonClass showListBtn" name="details" title="مشاهده جزییات" value="جزییات"  ></td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="شماره ترم">  <input  type="text" name="TermId" title="شماره ترم"  value="ترم 321" readonly>  </td>
-
-                <td    data-title="نام ترم  ">  <input  type="text" name="TermName"  title="نام ترم" value="نیم سال اول 95-94" readonly>  </td>
-                <td    data-title=" تعداد کل واحد ">  <input  type="text" name="numOfUnits"  title="تعداد کل واحد" value="15" readonly>  </td>
-                <td    data-title="معدل ترم  ">  <input  type="text" name="average"  title="معدل ترم" value="19.50" readonly>  </td>
-                <td   data-title="مشاهده جزییات"><input type="button" class="moreInfoButtonClass showListBtn" name="details" title="مشاهده جزییات" value="جزییات"  ></td>
-
-
-            </tr>
+       
+       
+      
+        
 
 
 
@@ -210,7 +145,6 @@ import="java.sql.*" %>
 
 
             <table>
-
                 <tr>
                     <td>
 
@@ -415,7 +349,7 @@ import="java.sql.*" %>
 
         <div  id="nextBackArrows">
 
-            <img src="${pageContext.request.contextPath}/resources/img.png" id="backArrow" title="ترم قبل">
+            <img src="${pageContext.request.contextPath}/resources/img/img.png" id="backArrow" title="ترم قبل">
             <img src="${pageContext.request.contextPath}/resources/img/nextArrow.png" id="nextArrow" title="ترم بعد">
 
 
@@ -441,7 +375,61 @@ import="java.sql.*" %>
 
 
     $(document).ready(function() {
+        
+        $.ajax({
+            url: "/student/loadSemestersInfo",
+            type:'GET',
+            dataType: 'json',
+            success: function (response) {
+               
+                 var table = document.getElementById("semestersInfoTable");
 
+                $.each(response, function() {
+                    var row = table.insertRow(-1);
+                    var code = row.insertCell(0);
+                    code.setAttribute("id", "code");
+
+                    var name = row.insertCell(1);
+                    name.setAttribute("id", "name");
+                    
+                    var sumOfUnits = row.insertCell(2);
+                    sumOfUnits.setAttribute("id", "sumOfUnits");
+
+                    var avg = row.insertCell(3);
+                    avg.setAttribute("id", "avg");
+                    
+                    var details = row.insertCell(4);
+                    
+                    code.innerHTML = this.termId;
+                    var str = "";
+                     if((parseInt(this.termId)% 10) == 1)
+                        str+= "نیمسال اول ";
+                    else if((parseInt(this.termId) % 10) == 2)
+                        str+= "نیمسال دوم ";
+                                                           document.getElementById("test").innerHTML=str;
+
+                    str += Math.floor(this.termId / 10);
+                   
+
+                    
+                    name.innerHTML = str;
+                    sumOfUnits.innerHTML = this.passedUnits;
+                    avg.innerHTML = this.avg;
+                    
+                    var b = document.createElement("button");
+                    b.innerHTML = "جزییات";
+                    b.setAttribute("class", "moreInfoButtonClass showListBtn");
+//                    b.onclick= showDetails;
+                    details.appendChild(b);
+                });
+
+  	     
+  	    },
+            error: function (error) {
+                    document.getElementById("test").innerHTML="failesss;";
+
+            }
+            });
 
         $('.showListBtn').click(function (e) {
 
