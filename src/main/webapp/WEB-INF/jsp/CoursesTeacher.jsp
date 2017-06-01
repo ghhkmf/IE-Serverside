@@ -17,6 +17,7 @@ import="java.sql.*" %>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/addCourseCss.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/searchCss.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/MessageResponse.css">
+    <link rel="icon" href='<c:url value="${pageContext.request.contextPath}/resources/css/Font.css" />'/>
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js" > </script>
     <script  src="${pageContext.request.contextPath}/resources/js/HeaderShrink.js" ></script>
 </head>
@@ -116,7 +117,7 @@ import="java.sql.*" %>
 <h1 id='h24'>  </h1>
 <h1 id='h25'>  </h1>
 
-<div  class="WrapperTableInfo" >  
+<div  class="WrapperTableInfo"  dir="rtl">  
     <!--style="display: none;">-->
 
     <%--<form:form action="#">--%>
@@ -125,6 +126,7 @@ import="java.sql.*" %>
         <table id="coursesTable" dir="rtl">
             <thead>
             <tr>
+                <th> <b> شماره سطر  </b> </th>
                 <th> <b>  نام درس   </b> </th>
                 <th> <b> کد درس     </b> </th>
                 <th>  <b>  نوع درس  </b> </th>
@@ -203,34 +205,25 @@ import="java.sql.*" %>
     </div>
 
 
-
-
     <div  class="WrapperTableInfo"  >
 
         <form:form action="#">
 
-
-            <table>
+            <table id="studentTable">
 
                 <thead>
-
                 <tr>
-
                     <th> <b> شماره سطر  </b> </th>
                     <th> <b>  نام    </b> </th>
                     <th> <b>    نام خانوادگی  </b> </th>
                     <th>  <b>  شماره دانشجویی  </b> </th>
                     <th> <b>نمره  </b></th>
-
-
                 </tr>
-
-
                 </thead>
 
                 <tbody>
 
-                <tr>
+<!--                <tr>
 
                     <td> <label>1</label> </td>
                     <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
@@ -242,134 +235,9 @@ import="java.sql.*" %>
                     <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
 
 
-                </tr>
-
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>
-
-
-                <!--
-
-    -->
+                </tr>-->
 
                 </tbody>
-
-
 
             </table>
 
@@ -440,28 +308,34 @@ import="java.sql.*" %>
                 $("#coursesTable").find("tr:gt(0)").remove();
 //                document.getElementById("h22").innerHTML="success";
                 var table = document.getElementById("coursesTable");
-
+                var count = 1;
                 $.each(response, function() {
                     var row = table.insertRow(-1);
-                    var name = row.insertCell(0);
+                    
+                    var counter = row.insertCell(0);
+                    counter.setAttribute("id", "counter");
+                    
+                    var name = row.insertCell(1);
                     name.setAttribute("id", "name");
 
-                    var code = row.insertCell(1);
+                    var code = row.insertCell(2);
                     code.setAttribute("id", "code");
                     
-                    var type = row.insertCell(2);
+                    var type = row.insertCell(3);
                     type.setAttribute("id", "type");
 
-                    var unit = row.insertCell(3);
+                    var unit = row.insertCell(4);
                     unit.setAttribute("id", "unit");
                     
-                    var stdlist = row.insertCell(4);
+                    var stdlist = row.insertCell(5);
 //                    stdlist.setAttribute("id", "stdlist");
-                    
+
+                    counter.innerHTML = count ++;
                     name.innerHTML = this.name;
                     code.innerHTML = this.code;
                     type.innerHTML = this.type;
                     unit.innerHTML = this.unit;
+                    
                     
                     var b = document.createElement("button");
                     b.innerHTML = "لیست دانشجویان";
@@ -472,7 +346,7 @@ import="java.sql.*" %>
   	     
   	    },
             error: function (error) {
-                document.getElementById("h22").innerHTML="errror";
+                document.getElementById("h22").innerHTML="error";
 
             }
         });
@@ -484,30 +358,73 @@ import="java.sql.*" %>
      // function callAjax(e) { 
       function showList(){
          // e.preventDefault();
-          document.getElementById("h25").innerHTML="hiiiiiiiiiiii1";
           var currentRow = $(this).closest("tr");
-          document.getElementById("h23").innerHTML="hiiiiiiiiiiii2";
-          var thisLessonId = $(currentRow).find('td:eq(1)').html();
-          document.getElementById("h24").innerHTML="hiiiiiiiiiiii3";
+          var thisLessonId = $(currentRow).find('td:eq(2)').html();
           var  tid = $('#termsel').val();
-        //  document.getElementById("h25").innerHTML="hiiiiiiiiiiii4";
+         
+//          document.getElementById("h25").innerHTML=thisLessonId;
         $.ajax({
             url: "/Teacher/showStudents",
             type:'POST',
-//            dataType: 'json',
+            dataType: 'json',
             data: {
-//                thisLessonId : thisLessonId ,
+                thisLessonId : thisLessonId ,
                 tid : tid },
             success: function (response) {
-                document.getElementById("h22").innerHTML="sss";
+               // document.getElementById("h22").innerHTML="enter show student success";
+                
+                $('#responseImg').fadeIn('slow').delay(1000).fadeOut('slow');
+                $('body').css('overflow','hidden');
+                $('#listWrapper').delay(2000).fadeIn('fast');
+                
+                $("#studentTable").find("tr:gt(0)").remove();
+                
+                var table = document.getElementById("studentTable");
+                var count = 1;
+                $.each(response, function() {
+                   // document.getElementById("h22").innerHTML= this.fName;
+                    var row = table.insertRow(-1);
+                           
+                    var counter = row.insertCell(0);
+                    counter.setAttribute("id", "counter");
+                    
+                    var fName = row.insertCell(1);
+                    fName.setAttribute("id", "fName");
+
+                    var lName = row.insertCell(2);
+                    lName.setAttribute("id", "lName");
+                    
+                    var code = row.insertCell(3);
+                    code.setAttribute("id", "code");
+                    
+                   var mark = row.insertCell(4);
+                   // mark.setAttribute("id", "mark");
+                    
+                    counter.innerHTML = count ++;
+                    fName.innerHTML = this.fName;
+                    lName.innerHTML = this.lName;
+                    code.innerHTML = this.code;
+                   // mark.innerHTML = this.mark;
+                    
+                    var b = document.createElement("input");
+                    b.type = 'number';
+                    b.class="mark";
+                    b.max="20";
+                    b.min="0";               
+                    mark.appendChild(b);
+                    });
+                    
+                    //  b.onclick= submitMark;
+                  
 
             },
              error: function (response) {
-                document.getElementById("h22").innerHTML="errrrrr";
+                document.getElementById("h22").innerHTML="error";
 
             }
         });
       }
+
 
 
 
@@ -534,12 +451,7 @@ import="java.sql.*" %>
 //            $('.WrapperTableInfo').delay(6000).slideDown('slow');
 //
 //
-//        });
-
-
-
-
-       
+//        });   
 //            document.getElementById("h23").innerHTML="hiiiiiiiiiiii2";
 //            e.preventDefault();
 //            $('#responseImg').fadeIn('slow').delay(5000).fadeOut('slow');
@@ -611,19 +523,14 @@ import="java.sql.*" %>
         });
 
 
-        $('#submitMarks').click(function (e) {
-
-            e.preventDefault();
+        function submitMark(){
+      //  $('#submitMarks').click(function (e) {
+           // e.preventDefault();
             $('#responseImg').fadeIn('slow').delay(2000).fadeOut('slow');
             $('#textResponce').html("اطلاعات با موفقیت ثبت شد.");
             $('#responseWrapper').delay(3000).fadeIn('fast').delay(2000).fadeOut('slow');
 
-
-
-        });
-
-
-
+        };
 
 
         $('.closeBtnResponseWrapper').click(function () {
@@ -647,10 +554,11 @@ import="java.sql.*" %>
                 }
 
             });
-
-
-
         });
+
+
+
+       
 
 
 
