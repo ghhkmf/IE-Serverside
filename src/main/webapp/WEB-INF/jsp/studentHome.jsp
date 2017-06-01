@@ -46,7 +46,7 @@ import="java.sql.*" %>
         <ul >
             <li class="currentPage"><a href="../StudentPages/studentHome.html" >خانه</a> </li>
             <li> <a href="/student/showProfile" >پروفایل</a>  </li>
-            <li><a href="../StudentPages/StudentSemesterInformation.html" >  ترم ها</a> </li>
+            <li><a href="/student/StudentSemesterInformation" >  ترم ها</a> </li>
             <li> <a href="../StudentPages/getCourse.html" >اخذ درس </a></li>
             <li><a href="/login/logout" >خروج</a> </li>
         </ul>
