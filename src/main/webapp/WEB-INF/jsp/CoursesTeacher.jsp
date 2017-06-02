@@ -75,7 +75,6 @@ import="java.sql.*" %>
 
 <div id="srchCont">
 
-    <h2 id="h222"> </h2>
     <form:form action="/Teacher/showCourse" method="POST" id="postForm">
 
         <table>
@@ -111,11 +110,10 @@ import="java.sql.*" %>
 
 <br><br><br><br><br>
 
+<h1 id="thisLessonIdHidden" style=" display:none "> </h1>
 
 <h1 id='h22'>  </h1>
-<h1 id='h23'>  </h1>
-<h1 id='h24'>  </h1>
-<h1 id='h25'>  </h1>
+
 
 <div  class="WrapperTableInfo"  dir="rtl">  
     <!--style="display: none;">-->
@@ -207,7 +205,7 @@ import="java.sql.*" %>
 
     <div  class="WrapperTableInfo"  >
 
-        <form:form action="#">
+        <%--<form:form action="#">--%>
 
             <table id="studentTable">
 
@@ -223,27 +221,14 @@ import="java.sql.*" %>
 
                 <tbody>
 
-<!--                <tr>
-
-                    <td> <label>1</label> </td>
-                    <td    data-title="نام دانشجو">  <input  type="text" name="studentFirstName" title="نام دانشجو" value="دانشجو 1" readonly>  </td>
-
-                    <td    data-title="نام خانوادگی دانشجو">  <input  type="text" name="studentLastName"  title="نام خانوادگی دانشجو" value="نام خانوادگی دانشجو" readonly >  </td>
-
-                    <td   data-title="شماره دانشجویی">  <input  type="text" name="studentId"  title="شماره دانشجویی" value="123456789"   readonly >  </td>
-
-                    <td  data-title="نمره"> <input  type="number" name="markOfCourse" title="نمره"  class="mark" max="20" min="0" > </td>
-
-
-                </tr>-->
-
                 </tbody>
-
             </table>
+            
+            <br/><br/> <br/>
+            
+            <input  type="button" value="ثبت" id="submitMarks" >
 
-            <input  type="submit" value="ثبت" id="submitMarks">
-
-        </form:form>
+        <%--</form:form>--%>
 
 
     </div>
@@ -291,11 +276,10 @@ import="java.sql.*" %>
     $(document).ready(function() {
         
         
-    
-      $('#postForm').submit(function (e) { 
+      $('#postForm').submit(function (e) {
           
-          var termid = null;
-      termid = $('#termsel').val();
+          var termid = $('#termsel').val();
+         
         e.preventDefault();
         
         $.ajax({
@@ -362,7 +346,8 @@ import="java.sql.*" %>
           var thisLessonId = $(currentRow).find('td:eq(2)').html();
           var  tid = $('#termsel').val();
          
-//          document.getElementById("h25").innerHTML=thisLessonId;
+        document.getElementById("thisLessonIdHidden").innerHTML = thisLessonId;
+        
         $.ajax({
             url: "/Teacher/showStudents",
             type:'POST',
@@ -371,7 +356,6 @@ import="java.sql.*" %>
                 thisLessonId : thisLessonId ,
                 tid : tid },
             success: function (response) {
-               // document.getElementById("h22").innerHTML="enter show student success";
                 
                 $('#responseImg').fadeIn('slow').delay(1000).fadeOut('slow');
                 $('body').css('overflow','hidden');
@@ -382,7 +366,9 @@ import="java.sql.*" %>
                 var table = document.getElementById("studentTable");
                 var count = 1;
                 $.each(response, function() {
+                    
                    // document.getElementById("h22").innerHTML= this.fName;
+                   
                     var row = table.insertRow(-1);
                            
                     var counter = row.insertCell(0);
@@ -398,13 +384,11 @@ import="java.sql.*" %>
                     code.setAttribute("id", "code");
                     
                    var mark = row.insertCell(4);
-                   // mark.setAttribute("id", "mark");
                     
                     counter.innerHTML = count ++;
                     fName.innerHTML = this.fName;
                     lName.innerHTML = this.lName;
                     code.innerHTML = this.code;
-                   // mark.innerHTML = this.mark;
                     
                     var b = document.createElement("input");
                     b.type = 'number';
@@ -413,20 +397,13 @@ import="java.sql.*" %>
                     b.min="0";               
                     mark.appendChild(b);
                     });
-                    
-                    //  b.onclick= submitMark;
-                  
-
+                                  
             },
              error: function (response) {
-                document.getElementById("h22").innerHTML="error";
-
+                alert("Error");
             }
         });
       }
-
-
-
 
         $('#onlyMySelf').change(function () {
 
@@ -443,32 +420,12 @@ import="java.sql.*" %>
 
         } );
 
-
-//        $('#my-button').click(function (e) {
-//
-//            e.preventDefault();
-//            $('#responseImg').fadeIn('slow').delay(5000).fadeOut('slow');
-//            $('.WrapperTableInfo').delay(6000).slideDown('slow');
-//
-//
-//        });   
-//            document.getElementById("h23").innerHTML="hiiiiiiiiiiii2";
-//            e.preventDefault();
-//            $('#responseImg').fadeIn('slow').delay(5000).fadeOut('slow');
-//            $('body').css('overflow','hidden');
-//            $('#listWrapper').delay(6000).fadeIn('fast');
-
-
-       
-
-
         $('.closeBtn').click(function () {
 
             $(this).closest('.close').fadeOut('slow');
 
 
         });
-
 
         $('.closeModal').click(function () {
 
@@ -478,8 +435,6 @@ import="java.sql.*" %>
 
 
         });
-
-
 
         $(window).on('resize', function (){
 
@@ -491,16 +446,8 @@ import="java.sql.*" %>
             else{
 
                 $('.moreInfoTr').css("display" , "none");
-
             }
-
-
-
         });
-
-
-
-
 
         $('.moreInfoButtonClass').click(  function(){
 
@@ -522,26 +469,61 @@ import="java.sql.*" %>
 
         });
 
+        //function submitMark(){
+        $('#submitMarks').click(function (e) {
+      //     e.preventDefault();
+//            $(this).closest('.close').fadeOut('slow');
+//            $('body').css('overflow','auto');
+//            $('#listWrapper .WrapperTableInfo').fadeOut('fast');
+            var  tid = $('#termsel').val();
+             // = [] ;
+            var st = [];
+            var tr = []
+            var ls = [];
+            var mr = [];
+            var thisLessonId = document.getElementById("thisLessonIdHidden").innerHTML;            
+            var table = document.getElementById("studentTable");           
 
-        function submitMark(){
-      //  $('#submitMarks').click(function (e) {
-           // e.preventDefault();
-            $('#responseImg').fadeIn('slow').delay(2000).fadeOut('slow');
-            $('#textResponce').html("اطلاعات با موفقیت ثبت شد.");
-            $('#responseWrapper').delay(3000).fadeIn('fast').delay(2000).fadeOut('slow');
+            var rows = table.rows;
+            for (var i = 1 ; i< rows.length ; i++) {
+                tr[i-1] = tid.toString();
+                st[i-1] = rows[i].cells[3].innerHTML.toString();
+                ls[i-1] = thisLessonId.toString();
+                mr[i-1] = rows[i].cells[4].innerHTML.toString();
+              // MarkList[i-1] = {termid: tid , studentId : rows[i].cells[3].innerHTML , thisLessonId: thisLessonId , mark: rows[i].cells[4].innerHTML};               
+               // MarkList[i-1] = { id: 1 , status: "me" , mark: rows[i].cells[4].innerHTML  , termLessonTeacherId : 3 , studentId : rows[i].cells[3].innerHTML };               
 
-        };
+            }
+          
+          // MarkList =  { id: 1 , status: "me" , mark: rows[1].cells[4].innerHTML  , termLessonTeacherId : 3 , studentId : rows[1].cells[3].innerHTML };
+
+            var MarkList = { termid: tr , studentId: st , mark: mr ,  thisLessonId : ls };
+                   
+           $.ajax({             
+                type: 'POST',
+                url: '/Teacher/InsertMark',
+              //  dataType: 'json', 
+               // contentType: 'application/json;', // charset=utf-8',
+                data: MarkList ,
+                success: function (response) { 
+                    $('#responseImg').fadeIn('slow').delay(2000).fadeOut('slow');
+                    $('#textResponce').html("اطلاعات با موفقیت ثبت شد.");
+                    $('#responseWrapper').delay(3000).fadeIn('fast').delay(2000).fadeOut('slow');
+                },
+
+                error: function () {
+                 //   document.getElementById("h22").innerHTML="error";
+                     alert("Error in inserting Mark");
+                }       
+             });                       
+        });
 
 
         $('.closeBtnResponseWrapper').click(function () {
 
             $('#responseWrapper').fadeOut('slow');
 
-
         });
-
-
-
 
         $('.mark').each(function () {
 
@@ -556,30 +538,10 @@ import="java.sql.*" %>
             });
         });
 
-
-
-       
-
-
-
-
-
-
-
     });
 
 
-
-
-
 </script>
-
-
-
-
-<!--ajax  script-->
-
-
 
 
 </body>
