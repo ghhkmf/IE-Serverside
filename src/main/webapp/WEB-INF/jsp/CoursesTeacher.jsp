@@ -384,6 +384,7 @@ import="java.sql.*" %>
                     code.setAttribute("id", "code");
                     
                    var mark = row.insertCell(4);
+                  // mark.setAttribute("id", "mark");
                     
                     counter.innerHTML = count ++;
                     fName.innerHTML = this.fName;
@@ -396,6 +397,7 @@ import="java.sql.*" %>
                     b.max="20";
                     b.min="0";               
                     mark.appendChild(b);
+                    
                     });
                                   
             },
@@ -475,10 +477,11 @@ import="java.sql.*" %>
 //            $(this).closest('.close').fadeOut('slow');
 //            $('body').css('overflow','auto');
 //            $('#listWrapper .WrapperTableInfo').fadeOut('fast');
+//            alert(mark.innerHTML);
             var  tid = $('#termsel').val();
              // = [] ;
             var st = [];
-            var tr = []
+            var tr = [];
             var ls = [];
             var mr = [];
             var thisLessonId = document.getElementById("thisLessonIdHidden").innerHTML;            
@@ -489,7 +492,7 @@ import="java.sql.*" %>
                 tr[i-1] = tid.toString();
                 st[i-1] = rows[i].cells[3].innerHTML.toString();
                 ls[i-1] = thisLessonId.toString();
-                mr[i-1] = rows[i].cells[4].innerHTML.toString();
+                mr[i-1] = rows[i].cells[4].children[0].value;
               // MarkList[i-1] = {termid: tid , studentId : rows[i].cells[3].innerHTML , thisLessonId: thisLessonId , mark: rows[i].cells[4].innerHTML};               
                // MarkList[i-1] = { id: 1 , status: "me" , mark: rows[i].cells[4].innerHTML  , termLessonTeacherId : 3 , studentId : rows[i].cells[3].innerHTML };               
 
