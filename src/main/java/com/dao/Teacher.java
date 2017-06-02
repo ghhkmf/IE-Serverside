@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Teacher.findByIsmgr", query = "SELECT t FROM Teacher t WHERE t.ismgr = :ismgr"),
     @NamedQuery(name = "Teacher.findByEdugroup", query = "SELECT t FROM Teacher t WHERE t.edugroup = :edugroup"),
     @NamedQuery(name = "Teacher.findByDegree", query = "SELECT t FROM Teacher t WHERE t.degree = :degree"),
-    @NamedQuery(name = "Teacher.findByCode", query = "SELECT t FROM Teacher t WHERE t.code = :code")})
+    @NamedQuery(name = "Teacher.findByCode", query = "SELECT t FROM Teacher t WHERE t.code = :code"),
+    @NamedQuery(name = "Teacher.findByUserCode", query = "SELECT t FROM Teacher t WHERE t.usercode.code = :usercode")})
 public class Teacher implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
