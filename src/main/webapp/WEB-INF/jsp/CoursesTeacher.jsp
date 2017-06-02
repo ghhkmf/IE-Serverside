@@ -207,7 +207,7 @@ import="java.sql.*" %>
 
         <%--<form:form action="#">--%>
 
-            <table id="studentTable">
+        <table id="studentTable" dir="rtl">
 
                 <thead>
                 <tr>
@@ -330,7 +330,7 @@ import="java.sql.*" %>
   	     
   	    },
             error: function (error) {
-                document.getElementById("h22").innerHTML="error";
+                alert("لطفا ترم را انتخاب نمایید");
 
             }
         });
@@ -402,7 +402,7 @@ import="java.sql.*" %>
                                   
             },
              error: function (response) {
-                alert("Error");
+                alert("لطفا  لیست دانشجویان درس مورد نظر را انتخاب نمایید");
             }
         });
       }
@@ -479,7 +479,7 @@ import="java.sql.*" %>
 //            $('#listWrapper .WrapperTableInfo').fadeOut('fast');
 //            alert(mark.innerHTML);
             var  tid = $('#termsel').val();
-             // = [] ;
+
             var st = [];
             var tr = [];
             var ls = [];
@@ -493,13 +493,8 @@ import="java.sql.*" %>
                 st[i-1] = rows[i].cells[3].innerHTML.toString();
                 ls[i-1] = thisLessonId.toString();
                 mr[i-1] = rows[i].cells[4].children[0].value;
-              // MarkList[i-1] = {termid: tid , studentId : rows[i].cells[3].innerHTML , thisLessonId: thisLessonId , mark: rows[i].cells[4].innerHTML};               
-               // MarkList[i-1] = { id: 1 , status: "me" , mark: rows[i].cells[4].innerHTML  , termLessonTeacherId : 3 , studentId : rows[i].cells[3].innerHTML };               
-
             }
           
-          // MarkList =  { id: 1 , status: "me" , mark: rows[1].cells[4].innerHTML  , termLessonTeacherId : 3 , studentId : rows[1].cells[3].innerHTML };
-
             var MarkList = { termid: tr , studentId: st , mark: mr ,  thisLessonId : ls };
                    
            $.ajax({             
@@ -516,7 +511,7 @@ import="java.sql.*" %>
 
                 error: function () {
                  //   document.getElementById("h22").innerHTML="error";
-                     alert("Error in inserting Mark");
+                     alert(" نمره ای وارد نمایید ");
                 }       
              });                       
         });
