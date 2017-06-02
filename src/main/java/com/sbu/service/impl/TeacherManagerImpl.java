@@ -12,6 +12,7 @@ import com.sbu.dao.impl.StudentDAOImpl;
 import com.sbu.dao.impl.TeacherDAOImpl;
 import com.dao.entity.Student;
 import com.dao.entity.Lesson;
+import com.dao.entity.Studenttermlessonteacher;
 import com.dao.entity.Teacher;
 import com.dao.entity.User;
 import com.dao.entity.Term;
@@ -72,6 +73,13 @@ public class TeacherManagerImpl /*implements UserManager*/ {
      public List<Lesson> findTermLessonTeacher(Integer termCode , Integer userCode)
      {
          return TeacherDAOImpl.findTermLessonTeacher(termCode , userCode);
+     }
+     
+     public List<User> findStudentTermLessonTeacher(Integer teacherCodeInt ,Integer termCodeInt ,Integer thisLessonIdInt)
+     {
+         //System.out.println(" Manager resulttttt " );
+         return  TeacherDAOImpl.findStudentTermLessonTeacher(teacherCodeInt ,termCodeInt ,thisLessonIdInt);
+         
      }
 }
 
