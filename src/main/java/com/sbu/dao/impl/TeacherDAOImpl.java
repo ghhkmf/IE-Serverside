@@ -1,13 +1,17 @@
 package com.sbu.dao.impl;
 
 import com.dao.entity.Lesson;
+import com.dao.entity.Student;
+import com.dao.entity.Studenttermlessonteacher;
 import com.dao.entity.Teacher;
 import com.dao.entity.Term;
 import com.dao.entity.Termlessonteacher;
 import com.dao.entity.User;
 import com.sbu.controller.model.CourseModel;
+import com.sbu.controller.model.StudentModel;
 import com.sbu.controller.model.TermLessonTeacherModel;
 import com.sbu.controller.model.UserModel;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -72,6 +76,29 @@ public class TeacherDAOImpl /*implements UserDAO*/ {
             //System.out.println("ll issssssssss"); //+ res.toString() );
          
          return lessonlist;
+    }
+    
+    
+    
+    @Transactional
+    public List<User> findStudentTermLessonTeacher(Integer teacherCodeInt ,Integer termCodeInt ,Integer thisLessonIdInt)
+    {
+        Query qu;
+        qu = entityManager.createQuery("SELECT u FROM User u WHERE u.code IN "
+                + "(SELECT s.studentid.code FROM Studenttermlessonteacher s"
+                + " WHERE s.termlessonteacherid.id IN "
+                + "(SELECT t FROM Termlessonteacher t"
+                + " WHERE  t.termid.code = :termid AND t.teacherid.code = :teacherid AND t.lessonid.code = :lessonid))");
+        
+        qu.setParameter("termid", termCodeInt );
+        qu.setParameter("teacherid", teacherCodeInt );
+        qu.setParameter("lessonid", thisLessonIdInt );
+        
+        List<User> studentlist = qu.getResultList();
+      //  String t = studentlist.get(0).getUsercode().getCode().toString();
+      // System.out.println("DAO resulttttttt ID: " + t );
+        
+        return studentlist;
     }
 
 }
