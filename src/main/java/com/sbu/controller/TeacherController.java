@@ -138,13 +138,17 @@ public class TeacherController {
         
          @RequestMapping(value = "InsertMark", method = RequestMethod.POST ) // , produces = "application/json")
         // @ResponseBody
-	public  void InsertMark(HttpSession session , @RequestParam(value = "termid[]", required = false) String[] termid ,
+	public  String InsertMark(HttpSession session , @RequestParam(value = "termid[]", required = false) String[] termid ,
                 @RequestParam(value = "thisLessonId[]", required = false) String[] thisLessonId ,
                 @RequestParam(value = "mark[]", required = false) String[] mark ,
-                @RequestParam(value = "studentId[]", required = false) String[] studentId  , Model model )
+                @RequestParam(value = "studentId[]", required = false) String[] studentId  , Model model ) 
         {
-          
-            System.out.println("Insert Mark controller : " + termid[0]  +  thisLessonId[0] + studentId[0] + mark[0]);
+            String teacherCode = "";  
+            teacherCode = session.getAttribute("userCode").toString();
+            Integer teacherCodeInt = Integer.parseInt(teacherCode);
+            teacherManagerImpl.insertMark(termid, thisLessonId, mark, studentId, teacherCodeInt);
+           // System.out.println("Insert Mark controller : " +  mark.length);
+            return "CoursesTeacher";
         }
         
      
