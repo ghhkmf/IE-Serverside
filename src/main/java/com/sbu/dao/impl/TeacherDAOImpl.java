@@ -103,34 +103,40 @@ public class TeacherDAOImpl /*implements UserDAO*/ {
     }
     
         @Transactional
-       //  public void insertMark(String termid, String thisLessonId, String mark, String studentId)
+
         public void insertMark(String[] termId, String[] LessonId, String[] mark, String[] studentId , Integer teacherid)
      {
-        //  termlessonteacherid
-         Integer termid = Integer.parseInt(termId[0]);
-         Integer lessonid = Integer.parseInt(LessonId[0]);
-         Integer studentid = Integer.parseInt(studentId[0]);
-         
-         Query qu1;
-         qu1 = entityManager.createQuery("SELECT t.id FROM Termlessonteacher t WHERE t.termid.code = :termId  AND t.teacherid.code = :teacherId AND t.lessonid.code = :lessonId ");
-         qu1.setParameter("termId", termid);
-         qu1.setParameter("teacherId", teacherid);
-         qu1.setParameter("lessonId", lessonid);
+         if(mark.length != 0)
+         {
+            Integer termid = Integer.parseInt(termId[0]);
+            Integer lessonid = Integer.parseInt(LessonId[0]);
 
-         List<Integer> resultId = qu1.getResultList();
-         Integer termlessonteacherid = resultId.get(0); // Integer.parseInt(str);
+            Query qu1 , qu2;
+            qu1 = entityManager.createQuery("SELECT t.id FROM Termlessonteacher t WHERE t.termid.code = :termId  AND t.teacherid.code = :teacherId AND t.lessonid.code = :lessonId ");
+            qu1.setParameter("termId", termid);
+            qu1.setParameter("teacherId", teacherid);
+            qu1.setParameter("lessonId", lessonid);
+
+            List<Integer> resultId = qu1.getResultList();
+            Integer termlessonteacherid = resultId.get(0); // Integer.parseInt(str);
+
+            
+           qu2 = entityManager.createQuery("SELECT s FROM Studenttermlessonteacher s WHERE s.termlessonteacherid.id = :termlessonteacherid");
+           qu2.setParameter("termlessonteacherid", termlessonteacherid);           
+           List<Studenttermlessonteacher> selectResult = qu2.getResultList();   // get all students having this lesson with this teacher in yhis term
+
+           
+           List<String> studentIdList = Arrays.asList(studentId);
+           for( int i=0; i<studentId.length; i++)
+           {
+               int index = studentIdList.indexOf(selectResult.get(i).getStudentid().getCode().toString());
+               int markInt = Integer.parseInt(mark[index]);
+               selectResult.get(i).setMark(markInt);
+           }
+          // System.out.println("befor bulkkkkkkkkkk" +  selectResult.get(0).getMark() );
          
-         System.out.println("DAO termlessonteacherid : " + termlessonteacherid );
-         
-         //Query qu;
-         //Integer ma = 2;
-//        qu = entityManager.createQuery("UPDATE Studenttermlessonteacher st SET st.mark = :ma  WHERE st.studentid IN : studentid"
-//                + "AND st. termlessonteacherid :  termlessonteacherid ");
-//        qu.setParameter("studentid", Arrays.asList(studentId));
-//        qu.setParameter("thisLessonid", Arrays.asList(thisLessonId));
-//        //qu.setParameter(mark, Arrays.asList(mark));
-//        qu.setParameter("termid", Arrays.asList(termId));
-//        qu.getResultList();
+
+        }
      }
 
 }
