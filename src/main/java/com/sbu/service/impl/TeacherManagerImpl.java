@@ -81,6 +81,18 @@ public class TeacherManagerImpl /*implements UserManager*/ {
          return  TeacherDAOImpl.findStudentTermLessonTeacher(teacherCodeInt ,termCodeInt ,thisLessonIdInt);
          
      }
+     
+
+    public void insertMark(String[] termid, String[] thisLessonId, String[] mark, String[] studentId , Integer teacherId) {
+        //logic of program to prapare information for DAO
+      //  for ( int i=0; i< termid.length; i++)
+       // {
+            //TeacherDAOImpl.insertMark(termid[i], thisLessonId[i], mark[i], studentId[i]);
+        TeacherDAOImpl.insertMark(termid, thisLessonId, mark, studentId , teacherId);
+       // }
+        
+        
+    }
 }
 
 
