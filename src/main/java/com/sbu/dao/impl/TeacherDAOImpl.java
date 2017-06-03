@@ -12,6 +12,7 @@ import com.sbu.controller.model.StudentModel;
 import com.sbu.controller.model.TermLessonTeacherModel;
 import com.sbu.controller.model.UserModel;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -100,5 +101,36 @@ public class TeacherDAOImpl /*implements UserDAO*/ {
         
         return studentlist;
     }
+    
+        @Transactional
+       //  public void insertMark(String termid, String thisLessonId, String mark, String studentId)
+        public void insertMark(String[] termId, String[] LessonId, String[] mark, String[] studentId , Integer teacherid)
+     {
+        //  termlessonteacherid
+         Integer termid = Integer.parseInt(termId[0]);
+         Integer lessonid = Integer.parseInt(LessonId[0]);
+         Integer studentid = Integer.parseInt(studentId[0]);
+         
+         Query qu1;
+         qu1 = entityManager.createQuery("SELECT t.id FROM Termlessonteacher t WHERE t.termid.code = :termId  AND t.teacherid.code = :teacherId AND t.lessonid.code = :lessonId ");
+         qu1.setParameter("termId", termid);
+         qu1.setParameter("teacherId", teacherid);
+         qu1.setParameter("lessonId", lessonid);
+
+         List<Integer> resultId = qu1.getResultList();
+         Integer termlessonteacherid = resultId.get(0); // Integer.parseInt(str);
+         
+         System.out.println("DAO termlessonteacherid : " + termlessonteacherid );
+         
+         //Query qu;
+         //Integer ma = 2;
+//        qu = entityManager.createQuery("UPDATE Studenttermlessonteacher st SET st.mark = :ma  WHERE st.studentid IN : studentid"
+//                + "AND st. termlessonteacherid :  termlessonteacherid ");
+//        qu.setParameter("studentid", Arrays.asList(studentId));
+//        qu.setParameter("thisLessonid", Arrays.asList(thisLessonId));
+//        //qu.setParameter(mark, Arrays.asList(mark));
+//        qu.setParameter("termid", Arrays.asList(termId));
+//        qu.getResultList();
+     }
 
 }
