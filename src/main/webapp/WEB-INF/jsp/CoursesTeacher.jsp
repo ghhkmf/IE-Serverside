@@ -484,15 +484,20 @@ import="java.sql.*" %>
             var tr = [];
             var ls = [];
             var mr = [];
+            var m;
             var thisLessonId = document.getElementById("thisLessonIdHidden").innerHTML;            
             var table = document.getElementById("studentTable");           
 
             var rows = table.rows;
             for (var i = 1 ; i< rows.length ; i++) {
-                tr[i-1] = tid.toString();
-                st[i-1] = rows[i].cells[3].innerHTML.toString();
-                ls[i-1] = thisLessonId.toString();
-                mr[i-1] = rows[i].cells[4].children[0].value;
+                m = rows[i].cells[4].children[0].value;
+                if( m >= 0  )
+                {
+                    tr[i-1] = tid.toString();
+                    st[i-1] = rows[i].cells[3].innerHTML.toString();
+                    ls[i-1] = thisLessonId.toString();
+                    mr[i-1] = m;
+                }
             }
           
             var MarkList = { termid: tr , studentId: st , mark: mr ,  thisLessonId : ls };
