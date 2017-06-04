@@ -13,6 +13,7 @@ import com.sbu.controller.model.CourseModel;
 import com.sbu.controller.model.StudentModel;
 import com.sbu.controller.model.StudenttermlessonteacherModel;
 import com.sbu.controller.model.UserModel;
+import com.sbu.controller.model.ModelStudentMark;
 import com.sbu.service.impl.TeacherManagerImpl;
 import com.sbu.service.impl.UserManagerImpl;
 import java.util.ArrayList;
@@ -106,32 +107,30 @@ public class TeacherController {
         
         //show students
           @RequestMapping(value = "showStudents", method = RequestMethod.POST , produces = "application/json")
-	public  @ResponseBody List<UserModel> showStudents(HttpSession session  , String tid , String thisLessonId , Model model ) {
+	public  @ResponseBody List<ModelStudentMark> showStudents(HttpSession session  , String tid , String thisLessonId , Model model ) {
             String teacherCode = "";  
             teacherCode = session.getAttribute("userCode").toString();
             Integer teacherCodeInt = Integer.parseInt(teacherCode);
             Integer termCodeInt =  Integer.parseInt(tid);
-            Integer thisLessonIdInt =  Integer.parseInt(thisLessonId);  
-            List<User> stltlist = teacherManagerImpl.findStudentTermLessonTeacher(teacherCodeInt ,termCodeInt ,thisLessonIdInt);
+            Integer thisLessonIdInt =  Integer.parseInt(thisLessonId); 
             
-            List<UserModel> studentlist =  new ArrayList<UserModel>() ; 
-            
-            for(int i=0; i<stltlist.size(); i++)
-                {
-                    User l = stltlist.get(i);
-                    UserModel temp = new UserModel();
-                    temp.setId(l.getId());
-                    temp.setCode(l.getCode());
-                    temp.setfName(l.getFname());
-                    temp.setlName(l.getLname());
-                    
-                   // temp.setSupervisorId(l.getSupervisorid().getCode());
-                    studentlist.add(temp);                    
-                }
-           // String t = studentlist.get(0).getUserCode().toString();
-            //System.out.println("afterr  controler : " + t );
+            List<Studenttermlessonteacher> stmalist = teacherManagerImpl.findStudentTermLessonTeacher(teacherCodeInt ,termCodeInt ,thisLessonIdInt);
 
-              return studentlist;
+           // System.out.println("before  controlerrrrrrr : " + stmalist.get(0).getMark());
+            List<ModelStudentMark> studentmarklist =  new ArrayList<ModelStudentMark>() ; 
+           
+            for(int i=0; i<stmalist.size(); i++)
+                {
+                    ModelStudentMark m = new ModelStudentMark();
+                    m.setCode(stmalist.get(i).getStudentid().getCode());
+                    m.setFname(stmalist.get(i).getStudentid().getFname());
+                    m.setLname(stmalist.get(i).getStudentid().getLname());
+                    m.setMark(stmalist.get(i).getMark().toString());                    
+                    studentmarklist.add(m);
+                }
+
+
+              return studentmarklist;
         }
                      
         ///////////////////////////////////////////////
