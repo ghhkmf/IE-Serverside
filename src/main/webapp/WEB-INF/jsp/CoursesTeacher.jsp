@@ -215,7 +215,8 @@ import="java.sql.*" %>
                     <th> <b>  نام    </b> </th>
                     <th> <b>    نام خانوادگی  </b> </th>
                     <th>  <b>  شماره دانشجویی  </b> </th>
-                    <th> <b>نمره  </b></th>
+                    <th> <b>نمره ثبت شده  </b></th>
+                    <th> <b>نمره جدید  </b></th>
                 </tr>
                 </thead>
 
@@ -383,19 +384,26 @@ import="java.sql.*" %>
                     var code = row.insertCell(3);
                     code.setAttribute("id", "code");
                     
-                   var mark = row.insertCell(4);
-                  // mark.setAttribute("id", "mark");
+                    var lastmark = row.insertCell(4);
+                    code.setAttribute("id", "code");
+                    
+                    var mark = row.insertCell(5);
+                    //mark.setAttribute("id", "mark");
+                  
+                   
                     
                     counter.innerHTML = count ++;
-                    fName.innerHTML = this.fName;
-                    lName.innerHTML = this.lName;
+                    fName.innerHTML = this.fname;
+                    lName.innerHTML = this.lname;
                     code.innerHTML = this.code;
+                    lastmark.innerHTML = this.mark;
                     
                     var b = document.createElement("input");
                     b.type = 'number';
                     b.class="mark";
                     b.max="20";
-                    b.min="0";               
+                    b.min="0";    
+                   // b.innerHTML = this.mark;
                     mark.appendChild(b);
                     
                     });
@@ -473,11 +481,7 @@ import="java.sql.*" %>
 
         //function submitMark(){
         $('#submitMarks').click(function (e) {
-      //     e.preventDefault();
-//            $(this).closest('.close').fadeOut('slow');
-//            $('body').css('overflow','auto');
-//            $('#listWrapper .WrapperTableInfo').fadeOut('fast');
-//            alert(mark.innerHTML);
+
             var  tid = $('#termsel').val();
 
             var st = [];
@@ -490,7 +494,7 @@ import="java.sql.*" %>
 
             var rows = table.rows;
             for (var i = 1 ; i< rows.length ; i++) {
-                m = rows[i].cells[4].children[0].value;
+                m = rows[i].cells[5].children[0].value; //if  not null so post to server
                 if( m >= 0  )
                 {
                     tr[i-1] = tid.toString();
