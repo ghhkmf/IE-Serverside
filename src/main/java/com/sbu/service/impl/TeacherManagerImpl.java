@@ -1,26 +1,26 @@
 package com.sbu.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import com.sbu.controller.model.TermLessonTeacherModel;
-import com.sbu.controller.model.CourseModel;
-import com.sbu.dao.impl.UserDAOImpl;
-import com.sbu.dao.impl.StudentDAOImpl;
-import com.sbu.dao.impl.TeacherDAOImpl;
-import com.dao.entity.Student;
 import com.dao.entity.Lesson;
+import com.dao.entity.Student;
 import com.dao.entity.Studenttermlessonteacher;
 import com.dao.entity.Teacher;
-import com.dao.entity.User;
 import com.dao.entity.Term;
 import com.dao.entity.Termlessonteacher;
-import com.sbu.controller.model.UserModel;
+import com.dao.entity.User;
+import com.sbu.controller.model.CourseModel;
+import com.sbu.controller.model.ModelStudentMark;
 import com.sbu.controller.model.StudentModel;
 import com.sbu.controller.model.TeacherModel;
 import com.sbu.controller.model.TermLessonTeacherModel;
+import com.sbu.controller.model.TermLessonTeacherModel;
+import com.sbu.controller.model.UserModel;
+import com.sbu.dao.impl.StudentDAOImpl;
+import com.sbu.dao.impl.TeacherDAOImpl;
+import com.sbu.dao.impl.UserDAOImpl;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TeacherManagerImpl /*implements UserManager*/ {
@@ -75,7 +75,7 @@ public class TeacherManagerImpl /*implements UserManager*/ {
          return TeacherDAOImpl.findTermLessonTeacher(termCode , userCode);
      }
      
-     public List<User> findStudentTermLessonTeacher(Integer teacherCodeInt ,Integer termCodeInt ,Integer thisLessonIdInt)
+     public List<Studenttermlessonteacher> findStudentTermLessonTeacher(Integer teacherCodeInt ,Integer termCodeInt ,Integer thisLessonIdInt)
      {
          //System.out.println(" Manager resulttttt " );
          return  TeacherDAOImpl.findStudentTermLessonTeacher(teacherCodeInt ,termCodeInt ,thisLessonIdInt);
