@@ -5,11 +5,17 @@
  */
 package com.sbu.controller;
 
+import com.dao.entity.Lesson;
+import com.dao.entity.Studenttermlessonteacher;
 import com.sbu.controller.model.CourseModel;
 import com.sbu.controller.model.TermModel;
 import com.sbu.service.impl.HeadOfDepartmentManagerImpl;
 import com.sbu.service.impl.UserManagerImpl;
 import java.util.List;
+import com.dao.entity.Term;
+import com.dao.entity.Teacher;
+import com.sbu.controller.model.ModelStudentMark;
+import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +31,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/headOfDepartment")
 public class ManagerController {
 
-    @Autowired
+   
+      @Autowired
     public UserManagerImpl userManagerImpl;
-    
    
     @Autowired
     public HeadOfDepartmentManagerImpl headOfDepartmentManagerImpl;
@@ -148,6 +154,100 @@ public class ManagerController {
 
              headOfDepartmentManagerImpl.updateCourseByCode(course);
              return true;
+        }
+        
+        //show coursepage of head of department
+        @RequestMapping(value = "/ShowCoursePage",method = RequestMethod.GET)
+	public String ShowCoursePage(Model model, HttpSession session) {
+             String userCode = ""; 
+             if(session.getAttribute("userCode") != null)
+              {
+                List<Term> term = headOfDepartmentManagerImpl.findTerm();  
+                model.addAttribute("termlist", term); 
+                List<Teacher> teacher = headOfDepartmentManagerImpl.findTeacher();  
+                model.addAttribute("teacherlist", teacher); 
+                userCode = session.getAttribute("userCode").toString();
+                 model.addAttribute("sessionId", userCode); 
+               // if(Integer.parseInt(userCode) == 1)
+                   return "CoursesManager";
+               // else
+                 //   return "CoursesManager";
+              }
+              return "redirect:/login";
+        }
+        
+        
+        
+         @RequestMapping(value = "showCourseAjax", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody List<CourseModel> showCourse(HttpSession session , String termid , String techerid , Model model ) {
+                
+                Integer userCodeInt = Integer.parseInt(techerid);
+                Integer termCodeInt =  Integer.parseInt(termid);
+                
+               
+                List<Lesson> lesson = headOfDepartmentManagerImpl.findTermLessonTeacher( termCodeInt , userCodeInt); 
+                List<CourseModel> courses = new ArrayList<CourseModel>();
+                 //System.out.println("lesson.size() :  " + termid.toString());
+                for(int i=0; i<lesson.size(); i++)
+                {
+                    Lesson l = lesson.get(i);
+                    CourseModel temp = new CourseModel();
+                    temp.setCode(l.getCode());
+                    temp.setId(l.getId());
+                    temp.setName(l.getName());
+                    temp.setType(l.getType());
+                    temp.setUnit(l.getUnit());
+                    courses.add(temp);                   
+                }
+                               
+
+                return  courses;  
+	}
+        
+       @RequestMapping(value = "showStudentsajax", method = RequestMethod.POST , produces = "application/json")//, produces = "application/json"
+	public  @ResponseBody List<ModelStudentMark> showStudents( String lessonidOut , String termidOut , String techeridOut  , Model model ) {
+           
+             System.out.println("techeridOut" + techeridOut );
+             System.out.println("termidOut" + termidOut );
+             System.out.println("lessonidOut" + lessonidOut );
+                
+            int teacherCodeInt = Integer.parseInt(techeridOut);   
+            int termCodeInt =  Integer.parseInt(termidOut);       
+            int thisLessonIdInt =  Integer.parseInt(lessonidOut ); 
+           
+           
+           List<Studenttermlessonteacher> stmalist =  headOfDepartmentManagerImpl.findStudentTermLessonTeacher(teacherCodeInt ,termCodeInt ,thisLessonIdInt);
+
+           System.out.println("number of students : " + stmalist.size());
+          // System.out.println("before  controlerrrrrrr : " + stmalist.get(0).getMark());
+            List<ModelStudentMark> studentmarklist =  new ArrayList<ModelStudentMark>() ; 
+           
+            for(int i=0; i<stmalist.size(); i++){
+                    ModelStudentMark m = new ModelStudentMark();
+                    m.setCode(stmalist.get(i).getStudentid().getCode());
+                    m.setFname(stmalist.get(i).getStudentid().getFname());
+                    m.setLname(stmalist.get(i).getStudentid().getLname());
+                    m.setMark(stmalist.get(i).getMark().toString());                    
+                    studentmarklist.add(m);
+                }
+
+
+              return studentmarklist;
+        }   
+        
+         @RequestMapping(value = "InsertMark", method = RequestMethod.POST ) 
+        // @ResponseBody
+	public  String InsertMark(HttpSession session , @RequestParam(value = "termid[]", required = false) String[] termid ,
+                @RequestParam(value = "thisLessonId[]", required = false) String[] thisLessonId ,
+                @RequestParam(value = "mark[]", required = false) String[] mark ,
+                @RequestParam(value = "studentId[]", required = false) String[] studentId ,
+                @RequestParam(value = "techerid[]", required = false) String[] techerid , Model model ) 
+        {
+            System.out.println("inner of Controller :)))) ");
+            Integer teacherCodeInt = Integer.parseInt(techerid[0] );
+            headOfDepartmentManagerImpl.insertMark2(termid, thisLessonId, mark, studentId, teacherCodeInt);
+           // System.out.println("Insert Mark controller : " +  mark.length);
+            return "CoursesManager";
         }
         
      
