@@ -10,10 +10,12 @@ import com.sbu.dao.impl.UserDAOImpl;
 import com.sbu.dao.impl.StudentDAOImpl;
 import com.dao.entity.Student;
 import com.dao.entity.Studenttermavg;
+import com.dao.entity.Studenttermlessonteacher;
 import com.dao.entity.User;
 import com.sbu.controller.model.UserModel;
 import com.sbu.controller.model.StudentModel;
 import com.sbu.controller.model.StudenttermavgModel;
+import com.sbu.controller.model.StudenttermlessonteacherResultModel;
 import java.util.ArrayList;
 
 @Service
@@ -71,6 +73,41 @@ public class StudentManagerImpl /*implements UserManager*/ {
         }
         System.out.println("com.sbu.service.impl.StudentManagerImpl.findStudentSemesters()");
         System.out.println("Lists in manager:  "+ foundSemesters.toString());
+        return foundSemesters;
+    }
+    
+    public List<StudenttermlessonteacherResultModel> findSemesterDetails(Integer code, Integer termid)
+    {
+        System.out.println("com.sbu.service.impl.StudentManagerImpl.findSemesterDetails()");
+        List<Studenttermlessonteacher> semesters = StudentDAOImpl.findSemesterDetails(code, termid);
+        List<StudenttermlessonteacherResultModel> foundSemesters = new ArrayList<>();
+        for(int i=0; i<semesters.size(); i++)
+        {
+            Studenttermlessonteacher temp = semesters.get(i);
+            StudenttermlessonteacherResultModel newEntry = new StudenttermlessonteacherResultModel();
+            Integer tempTID = temp.getTermlessonteacherid().getTermid().getCode();
+
+            System.out.println("sija" + tempTID +termid);
+            if(tempTID.equals(termid))
+            {
+                newEntry.setCourseCode(temp.getTermlessonteacherid().getLessonid().getCode());
+                newEntry.setCourseName(temp.getTermlessonteacherid().getLessonid().getName());
+                newEntry.setCourseType(temp.getTermlessonteacherid().getLessonid().getType());
+                newEntry.setId(temp.getId());
+                newEntry.setCourseMark(temp.getMark());
+                newEntry.setStudentid(temp.getStudentid().getCode());
+                newEntry.setTermid(tempTID);
+
+                String str = temp.getTermlessonteacherid().getTeacherid().getFname();
+                str += " " + temp.getTermlessonteacherid().getTeacherid().getLname();
+                newEntry.setTeacherName(str);
+                newEntry.setCourseCredit(temp.getTermlessonteacherid().getLessonid().getUnit());
+                foundSemesters.add(newEntry);
+                System.out.println("teacher name"+newEntry.getTeacherName());
+                System.out.println("gradee"+ newEntry.getCourseCredit());
+            }
+        }
+        
         return foundSemesters;
     }
 }
