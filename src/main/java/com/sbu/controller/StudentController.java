@@ -12,6 +12,7 @@ import com.sbu.controller.model.TeacherModel;
 import com.dao.entity.Student;
 import com.sbu.controller.model.StudentModel;
 import com.sbu.controller.model.StudenttermavgModel;
+import com.sbu.controller.model.StudenttermlessonteacherResultModel;
 import com.sbu.service.impl.UserManagerImpl;
 import com.sbu.service.impl.StudentManagerImpl;
 import com.sbu.service.impl.TeacherManagerImpl;
@@ -146,6 +147,23 @@ public class StudentController {
                 System.out.println("com.sbu.controller.StudentController.loadSemestersInfo()");
                 System.out.println("list of semesters" + semesterList.toString());
                 return  semesterList; 
+	}
+        
+     @RequestMapping(value = "loadDetails", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody List<StudenttermlessonteacherResultModel> loadDetails(HttpSession session ,String termid, Model model ) {
+         System.out.println("com.sbu.controller.StudentController.loadDetails()");
+         String userCode = ""; 
+         List<StudenttermlessonteacherResultModel> semesterDetailList = null;
+               // System.out.print("termid here"+termid);
+                if(session.getAttribute("userCode") != null)
+                {
+                    userCode = session.getAttribute("userCode").toString();
+                    Integer userCodeInt = Integer.parseInt(userCode);
+                    semesterDetailList = studentManagerImpl.findSemesterDetails(userCodeInt, Integer.parseInt(termid));
+
+                    System.out.println("hereee" + semesterDetailList.toString());
+                }
+                return semesterDetailList; 
 	}
 
 }
