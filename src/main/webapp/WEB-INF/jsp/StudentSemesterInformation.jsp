@@ -73,7 +73,7 @@ import="java.sql.*" %>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div  class="WrapperTableInfo" style="width: 80%; margin: 0 auto;" >
     <h2 id="test">just for check</h2>
-    <form:form action="#">
+    <form>
 
         <table  id="semestersInfoTable">
 
@@ -112,7 +112,7 @@ import="java.sql.*" %>
 
 
 
-    </form:form>
+    </form>
 
 </div>
 
@@ -141,7 +141,7 @@ import="java.sql.*" %>
 
     <div id="srchCont">
 
-        <form:form action="#">
+        <form:form>
 
 
             <table>
@@ -194,7 +194,7 @@ import="java.sql.*" %>
         <div>   ترم 1 <br>  <br> <br>    </div>
 
 
-        <form:form action="#">
+        <form:form >
 
 
 
@@ -216,98 +216,7 @@ import="java.sql.*" %>
 
                 </thead>
 
-                <tbody>
-
-                <tr>
-
-                    <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس"  value="درس1" readonly>  </td>
-
-                    <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="43112020311" readonly>  </td>
-                    <td   data-title="نوع درس"><input  type="text" name="typeOfCourse" title="نوع درس" value="تخصصی" readonly></td>
-
-
-
-
-                    <td  data-title="تعداد واحد درس">  <input  type="text" name="unitOfCourse" title="تعداد واحد درس" value="3" readonly > </td>
-                    <td  data-title="نام استاد">  <input  type="text" name="techerName" title="نام استاد" value="استاد1 " readonly > </td>
-                    <td  data-title="نمره">  <input  type="text" name="markCourse" title="نمره درس" value="18 " readonly > </td>
-
-                </tr>
-                <tr>
-
-                    <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس"  value="درس1" readonly>  </td>
-
-                    <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="43112020311" readonly>  </td>
-                    <td   data-title="نوع درس"><input  type="text" name="typeOfCourse" title="نوع درس" value="تخصصی" readonly></td>
-
-
-
-
-                    <td  data-title="تعداد واحد درس">  <input  type="text" name="unitOfCourse" title="تعداد واحد درس" value="3" readonly > </td>
-                    <td  data-title="نام استاد">  <input  type="text" name="techerName" title="نام استاد" value="استاد1 " readonly > </td>
-                    <td  data-title="نمره">  <input  type="text" name="markCourse" title="نمره درس" value="نامشخص " readonly > </td>
-
-                </tr>
-                <tr>
-
-                    <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس"  value="درس1" readonly>  </td>
-
-                    <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="43112020311" readonly>  </td>
-                    <td   data-title="نوع درس"><input  type="text" name="typeOfCourse" title="نوع درس" value="تخصصی" readonly></td>
-
-
-
-
-                    <td  data-title="تعداد واحد درس">  <input  type="text" name="unitOfCourse" title="تعداد واحد درس" value="3" readonly > </td>
-                    <td  data-title="نام استاد">  <input  type="text" name="techerName" title="نام استاد" value="استاد1 " readonly > </td>
-                    <td  data-title="نمره">  <input  type="text" name="markCourse" title="نمره درس" value="نامشخص " readonly > </td>
-
-                </tr>
-                <tr>
-
-                    <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس"  value="درس1" readonly>  </td>
-
-                    <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="43112020311" readonly>  </td>
-                    <td   data-title="نوع درس"><input  type="text" name="typeOfCourse" title="نوع درس" value="تخصصی" readonly></td>
-
-
-
-
-                    <td  data-title="تعداد واحد درس">  <input  type="text" name="unitOfCourse" title="تعداد واحد درس" value="3" readonly > </td>
-                    <td  data-title="نام استاد">  <input  type="text" name="techerName" title="نام استاد" value="استاد1 " readonly > </td>
-                    <td  data-title="نمره">  <input  type="text" name="markCourse" title="نمره درس" value="17 " readonly > </td>
-
-                </tr>
-                <tr>
-
-                    <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس"  value="درس1" readonly>  </td>
-
-                    <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="43112020311" readonly>  </td>
-                    <td   data-title="نوع درس"><input  type="text" name="typeOfCourse" title="نوع درس" value="تخصصی" readonly></td>
-
-
-
-
-                    <td  data-title="تعداد واحد درس">  <input  type="text" name="unitOfCourse" title="تعداد واحد درس" value="3" readonly > </td>
-                    <td  data-title="نام استاد">  <input  type="text" name="techerName" title="نام استاد" value="استاد1 " readonly > </td>
-                    <td  data-title="نمره">  <input  type="text" name="markCourse" title="نمره درس" value="19" readonly > </td>
-
-                </tr>
-                <tr>
-
-                    <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس"  value="درس1" readonly>  </td>
-
-                    <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="43112020311" readonly>  </td>
-                    <td   data-title="نوع درس"><input  type="text" name="typeOfCourse" title="نوع درس" value="تخصصی" readonly></td>
-
-
-
-
-                    <td  data-title="تعداد واحد درس">  <input  type="text" name="unitOfCourse" title="تعداد واحد درس" value="3" readonly > </td>
-                    <td  data-title="نام استاد">  <input  type="text" name="techerName" title="نام استاد" value="استاد1 " readonly > </td>
-                    <td  data-title="نمره">  <input  type="text" name="markCourse" title="نمره درس" value="20 " readonly > </td>
-
-                </tr>
+                <tbody id="detailsTable">
 
 
 
@@ -330,11 +239,11 @@ import="java.sql.*" %>
 
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="overallInfo">
 
                 <tr>
-                    <td  data-title=" مجموع واحد ها">  <input  type="text" name="totalUnits" title="مجموع واحد ها"  value="16 " readonly > </td>
-                    <td  data-title="معدل ترم">  <input  type="text" name="averageSemester" title="معدل ترم"  value="19 " readonly > </td>
+                    <td  data-title=" مجموع واحد ها">  <input id="totalUnits" type="text" name="totalUnits" title="مجموع واحد ها" readonly > </td>
+                    <td  data-title="معدل ترم">  <input id="AVG" type="text" name="averageSemester" title="معدل ترم" readonly > </td>
                 </tr>
 
                 </tbody>
@@ -375,7 +284,74 @@ import="java.sql.*" %>
 
 
     $(document).ready(function() {
-        
+         $(document).on("click","#showListBtn", function (e) {
+             e.preventDefault();
+             
+            var selectedTR = $(this).closest('tr');
+            var termid = selectedTR.find("#code").text();
+            document.getElementById("test").innerHTML=termid;
+
+
+            $.ajax({
+            url: '/student/loadDetails',
+            type:'POST',
+            data:{
+                termid: termid
+            },
+            dataType: 'json',
+            success: function (response) {
+               
+
+                 var table = document.getElementById("detailsTable");
+                 var totalUnits = 0.0;
+                 var termAVG = 0.0;
+                 
+                $.each(response, function() {
+                    var row = table.insertRow(-1);
+                    var courseName = row.insertCell(0);
+                    courseName.setAttribute("id", "courseName");
+
+                    var courseCode = row.insertCell(1);
+                    courseCode.setAttribute("id", "courseCode");
+                    
+                    var courseType = row.insertCell(2);
+                    courseType.setAttribute("id", "courseType");
+
+                    var courseCredit = row.insertCell(3);
+                    courseCredit.setAttribute("id", "courseCredit");
+                    
+                    var teacherName = row.insertCell(4);
+                    teacherName.setAttribute("id", "teacherName");
+                    
+                    var courseMark = row.insertCell(5);
+                    courseMark.setAttribute("id", "courseMark");
+                             
+                    courseName.innerHTML = this.courseName;
+                    courseCode.innerHTML = this.courseCode;
+                    courseType.innerHTML = this.courseType;
+                    courseCredit.innerHTML = this.courseCredit;
+                    teacherName.innerHTML = this.teacherName;
+                    courseMark.innerHTML = this.courseMark;
+                    
+                    totalUnits += this.courseCredit;
+                    termAVG += (this.courseCredit * this.courseMark);
+                });
+                document.getElementById("AVG").value = termAVG/totalUnits;
+                document.getElementById("totalUnits").value = totalUnits;
+
+  	    },
+            error: function (error) {
+                    document.getElementById("test").innerHTML="failesss;";
+
+            }
+            });
+                       
+            $('#responseImg').fadeIn('slow').delay(2000).fadeOut('slow');
+            $('body').css('overflow','hidden');
+            $('#listWrapper').delay(1000).fadeIn('fast');
+
+
+        });
         $.ajax({
             url: "/student/loadSemestersInfo",
             type:'GET',
@@ -406,7 +382,7 @@ import="java.sql.*" %>
                         str+= "نیمسال اول ";
                     else if((parseInt(this.termId) % 10) == 2)
                         str+= "نیمسال دوم ";
-                                                           document.getElementById("test").innerHTML=str;
+                     document.getElementById("test").innerHTML=str;
 
                     str += Math.floor(this.termId / 10);
                    
@@ -418,8 +394,7 @@ import="java.sql.*" %>
                     
                     var b = document.createElement("button");
                     b.innerHTML = "جزییات";
-                    b.setAttribute("class", "moreInfoButtonClass showListBtn");
-//                    b.onclick= showDetails;
+                    b.setAttribute("id", "showListBtn");
                     details.appendChild(b);
                 });
 
@@ -431,15 +406,7 @@ import="java.sql.*" %>
             }
             });
 
-        $('.showListBtn').click(function (e) {
-
-            e.preventDefault();
-            $('#responseImg').fadeIn('slow').delay(5000).fadeOut('slow');
-            $('body').css('overflow','hidden');
-            $('#listWrapper').delay(6000).fadeIn('fast');
-
-
-        });
+       
 
 
         $('.closeBtn').click(function () {
@@ -474,7 +441,7 @@ import="java.sql.*" %>
 
 
 
-
+       
     });
 
 
