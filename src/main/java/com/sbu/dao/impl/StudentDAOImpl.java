@@ -4,6 +4,8 @@ package com.sbu.dao.impl;
 import com.dao.entity.User;
 import com.dao.entity.Student;
 import com.dao.entity.Studenttermavg;
+import com.dao.entity.Studenttermlessonteacher;
+import com.dao.entity.Termlessonteacher;
 import java.util.List;
 import javax.persistence.Entity;
 import com.sbu.controller.model.UserModel;
@@ -54,6 +56,18 @@ public class StudentDAOImpl /*implements UserDAO*/ {
         List<Studenttermavg> foundSemesters = entityManager.createNamedQuery("Studenttermavg.findByUserCode").setParameter("studentid" , code).getResultList();
         if(foundSemesters.isEmpty())
             System.out.println("query not found");
+        return foundSemesters;
+    }
+    
+    @Transactional
+    public List<Studenttermlessonteacher> findSemesterDetails(Integer code, Integer termid)
+    {
+        List<Studenttermlessonteacher> foundSemesters = entityManager.createNamedQuery("Studenttermlessonteacher.findByStudentId").setParameter("studentid" , code).getResultList();
+        if(foundSemesters.isEmpty())
+        {
+            System.out.println("query not found");
+        }
+        
         return foundSemesters;
     }
     
