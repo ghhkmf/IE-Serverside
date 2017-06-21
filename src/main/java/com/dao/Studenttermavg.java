@@ -32,7 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Studenttermavg.findById", query = "SELECT s FROM Studenttermavg s WHERE s.id = :id"),
     @NamedQuery(name = "Studenttermavg.findByAvg", query = "SELECT s FROM Studenttermavg s WHERE s.avg = :avg"),
     @NamedQuery(name = "Studenttermavg.findByPassedunits", query = "SELECT s FROM Studenttermavg s WHERE s.passedunits = :passedunits"),
-    @NamedQuery(name = "Studenttermavg.findByStatus", query = "SELECT s FROM Studenttermavg s WHERE s.status = :status")})
+    @NamedQuery(name = "Studenttermavg.findByStatus", query = "SELECT s FROM Studenttermavg s WHERE s.status = :status"),
+    @NamedQuery(name = "Studenttermavg.findByUserCode", query = "SELECT s FROM Studenttermavg s WHERE s.studentid.code = :studentid")})
+
 public class Studenttermavg implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
