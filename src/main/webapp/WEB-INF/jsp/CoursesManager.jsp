@@ -15,17 +15,20 @@ import="java.sql.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+     
     <meta charset="UTF-8">
     <title>سیستم گلستان دانشگاه شهید بهشتی</title>
-    <link rel="icon" href="../../images/GolestanLogo.png">
-    <link rel="stylesheet" href="../../cssFiles/Font.css">
-    <link rel="stylesheet" href="../../cssFiles/cssNavigationBar.css">
-    <link rel="stylesheet" href="../../cssFiles/topSmootScrol.css">
-    <link rel="stylesheet" href="../../cssFiles/addCourseCss.css">
-    <link rel="stylesheet" href="../../cssFiles/searchCss.css">
-    <link rel="stylesheet" href="../../cssFiles/MessageResponse.css">
-    <script src="../../jsFiles/jquery-1.11.3.min.js" > </script>
-    <script  src="../../jsFiles/HeaderShrink.js" ></script>
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/GolestanLogo.png">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cssNavigationBar.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/topSmootScrol.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/addCourseCss.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/searchCss.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/MessageResponse.css">
+    <link rel="icon" href='<c:url value="${pageContext.request.contextPath}/resources/css/Font.css" />'/>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js" > </script>
+    <script  src="${pageContext.request.contextPath}/resources/js/HeaderShrink.js" ></script>
+    
 </head>
 <body>
 <header>
@@ -43,21 +46,21 @@ import="java.sql.*" %>
             <a href="#" >&#9776;</a>
 
         </div>
-        <ul >
-            <li ><a href="../ManagerPages/HeadOfDepartmentHome.html" >خانه</a> </li>
-            <li> <a href="../ManagerPages/HeadOfDepartmentInformation.html" >پروفایل</a>  </li>
-            <li><a href="../ManagerPages/ListTerms.html" >  ترم ها</a> </li>
-            <li class="currentPage"> <a href="/teacher/showCoursePage"  >دروس </a></li>
-            <li> <a href="../ManagerPages/newOrEditCourse.html" >تعریف درس جدید </a></li>
-            <li> <a href="../ManagerPages/defineNewTerm.html" >ویرایش  ترم جدید </a></li>
-            <li> <a href="../ManagerPages/EditSemester.html" >ویرایش کلاس های ترم جدید </a></li>
-            <li><a href="../HomePage.html" >خروج</a> </li>
+        <ul>
+            <li><a href="HeadOfDepartmentHome.jsp" >خانه</a> </li>
+            <li> <a href="/student/showProfile" >پروفایل</a>  </li>
+            <li><a href="/headOfDepartment" >  ترم ها</a> </li>
+            <li  class="currentPage"> <a href="/headOfDepartment/ShowCoursePage"  >دروس </a></li>
+            <li> <a href="/headOfDepartment/showInsertCoursePage" >تعریف درس جدید </a></li>
+            <li> <a href="/headOfDepartment/showDefineNewTermPage" >ویرایش  ترم جدید </a></li>
+            <li> <a href="/headOfDepartment" >ویرایش کلاس های ترم جدید </a></li>
+            <li><a href="/login/logout" >خروج</a> </li>
         </ul>
     </nav>
 
 
 </header>
-<img src="../../images/top_arrow.png" id="topArrow" >
+<img src="${pageContext.request.contextPath}/resources/img/top_arrow.png" id="topArrow" >
 
 <script type="text/javascript">
 
@@ -86,11 +89,11 @@ import="java.sql.*" %>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
-
+<h1 id="sessionIdHidden" style=" display:none "> <c:out value="${sessionId}"> </c:out></h1>
 
 <div id="srchCont">
 
-    <form action="#">
+    <form:form action="/headOfDepartment/showCourseAjax" method="POST" id="postForm">
 
 
         <table>
@@ -99,35 +102,29 @@ import="java.sql.*" %>
                 <td>
 
                     <label><b>ترم : </b></label>
-                    <select name="Term" title="Term">
-
-                        <option value="T4">آخرین</option>
-                        <option value="T4">اولین</option>
-                        <option value="T1">نیمسال اول 95-96</option>
-                        <option value="T2">نیمسال دوم 95-96</option>
-                        <option value="T3">نیمسال اول 95-94</option>
-                        <option value="T3">نیمسال دوم 95-94</option>
-                        <option value="T3">نیمسال اول 94-93</option>
-                        <option value="T3">نیمسال دوم 94-93</option>
+                    <select name="Term" title="Term"  id="termsel">
+                       <option value="">ترم را انتخاب کنید</option>
+                        <c:if test="${not empty termlist }">
+                            <c:forEach items="${termlist}" var="item">  
+                        <option value="<c:out value="${item.code}"> </c:out>" > <c:out value="${item.code}"> </c:out> </option>
+                       
+                            </c:forEach>
+                        </c:if>
                     </select>
 
                 </td>
 
 
                 <td>
-                    <select  name="teacherName" title="نام استاد" id="nameTeacher">
+                    <select  name="teacherName" title="نام استاد" id="teachersel">
 
-                        <option value=""> نام استاد را انتخاب کنید</option>
-                        <option value="Teacher1">استاد 1</option>
-                        <option value="Teacher2">استاد 2</option>
-                        <option value="Teacher3">استاد 3</option>
-                        <option value="Teacher4">استاد 4</option>
-                        <option value="Teacher5">استاد 5</option>
-                        <option value="Teacher6">استاد 6</option>
-                        <option value="Teacher7">استاد 7</option>
-                        <option value="Teacher8">استاد 8</option>
-                        <option value="Teacher9">استاد 9</option>
-                        <option value="Teacher10">استاد 10</option>
+                       <option value="">استاد را انتخاب کنید</option>
+                        <c:if test="${not empty teacherlist }">
+                            <c:forEach items="${teacherlist}" var="item">  
+                        <option value="<c:out value="${item.code}"> </c:out>" > <c:out value="${item.code}"> </c:out> </option>
+                       
+                            </c:forEach>
+                        </c:if>
 
 
                     </select>
@@ -135,210 +132,102 @@ import="java.sql.*" %>
                 </td>
 
 
-                <td>
-                    <label><b>فقط برای خودم :  </b></label>
-                    <input type="checkbox" title="صرفا دروس خودم" id="onlyMySelf">
-
-                </td>
-
-
-
+               
 
                 <td>
 
-                    <input type="submit" value="جستجو" id="my-button"  >
+                     <input type="submit" name="my-button" value="جستجو" id="my-button"  >
 
                 </td>
-
-
-
-
 
             </tr>
 
 
         </table>
 
-    </form>
+    </form:form>
 
 </div>
 
 
 <br><br><br><br><br>
 
+<h1 id="thisLessonIdHidden" style=" display:none "> </h1>
 
 
+<div  class="WrapperTableInfo"  dir="rtl">  
+    <br> <br> <br>
 
-<div  class="WrapperTableInfo" style="display: none;">
-
-
-
-
-    <form action="#">
-
-
-        <table>
-
+        <table id="coursesTable" dir="rtl" >
             <thead>
-
             <tr>
-
+                <th> <b> شماره سطر  </b> </th>
                 <th> <b>  نام درس   </b> </th>
                 <th> <b> کد درس     </b> </th>
                 <th>  <b>  نوع درس  </b> </th>
                 <th> <b> تعداد واحد   </b></th>
-
-
+                <th> <b> لیست دانشجویان  </b></th>
             </tr>
-
-
             </thead>
-
+            
             <tbody>
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-            <tr>
-
-                <td    data-title="نام درس">  <input  type="text" name="courseName" title="نام درس" value="درس1" readonly>  </td>
-
-                <td    data-title="کد درس">  <input  type="text" name="courseId"  title="کد درس" value="1234" readonly >  </td>
-
-                <td   data-title="نوع درس">  <input  type="text" name="typeOfCourse"  title="نوع درس" value="پایه"  readonly >  </td>
-
-                <td  data-title="تعداد واحد درس"> <input  type="number" name="unitOfCourse" title="تعداد واحد درس" value="3"  readonly> </td>
-
-
-            </tr>
-
-
-
-
-
-
+      
+            
             </tbody>
-
-
 
         </table>
 
-    </form>
-
-
-
+  
 
 </div>
 
 
 
+    
+<div  id="listWrapper" class="close" style="display: none;">
+
+    <span class=" closeModal "><b>&#10006;</b></span>
+   
+
+    <div  class="WrapperTableInfo"  >
+
+       
+
+        <table id="studentTable" dir="rtl"  >
+
+                <thead>
+                <tr>
+                    <th> <b> شماره سطر  </b> </th>
+                    <th> <b>  نام    </b> </th>
+                    <th> <b>    نام خانوادگی  </b> </th>
+                    <th>  <b>  شماره دانشجویی  </b> </th>
+                    <th> <b>نمره ثبت شده  </b></th>
+                    <th> <b>نمره جدید  </b></th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+            
+            <br/><br/> <br/>
+            
+            <input  type="button" value="ثبت" id="submitMarks" >
+
+       
+
+    </div>
+
+    <br><br><br><br><br><br><br><br><br>
+
+
+</div>
+
 <br><br><br><br><br><br><br><br><br><br>
 <div id="responseImg" >
 
-    <img src="../../images/ajaxload.gif">
+    <img src="${pageContext.request.contextPath}/resources/img/ajaxload.gif">
 
 
 </div>
@@ -363,14 +252,236 @@ import="java.sql.*" %>
         } );
 
 
-        $('#my-button').click(function (e) {
+        
+         $('#postForm').submit(function (e) {
+             
+           e.preventDefault();
+          var termid = $('#termsel').val();
+          var techerid = $('#teachersel').val();
+          var test = document.getElementById("sessionIdHidden").innerHTML;
+          alert(test +"");
+              
+        $.ajax({
+            url: "/headOfDepartment/showCourseAjax",
+            type:'POST',
+            dataType: 'json',
+            data: {
+                termid: termid,
+                techerid  : techerid },
+            success: function (response) {
+                $("#coursesTable").find("tr:gt(0)").remove();
+                var table = document.getElementById("coursesTable");
+                var count = 0;
+                $.each(response, function() {
+                    var row = table.insertRow(-1);
+                    
 
-            e.preventDefault();
-            $('#responseImg').fadeIn('slow').delay(5000).fadeOut('slow');
-            $('.WrapperTableInfo').delay(6000).slideDown('slow');
+                    
+                    count++;
+                    row.innerHTML += " <td     data-title='شماره سطر'> <lable> " + count +" </lable> </td> "+
+                                     " <td     data-title='نام درس'> <input  type='text' name='courseName'  title='نام درس' value='"+ this.name +"' readonly > </td>" +
+                                     " <td     data-title='کد درس'>  "+  this.code +"</td>" +
+                                     " <td     data-title='نوع درس'> <input  type='text' name='courseType'  title='نوع درس' value='"+  this.type +"' readonly >   </td>" + 
+                                     " <td     data-title='تعداد واحد'> <input  type='text' name='courseUnit'  title='تعداد واحد' value='"+  this.unit +"' readonly ></td> " ;
+              
+                
+                    var stdlist = row.insertCell(5);
+                    var b = document.createElement("button");
+                    b.innerHTML = "لیست دانشجویان";
+                    b.onclick= showList;
+                    stdlist.appendChild(b);
+                    
+                });
+  	     
+  	    },
+            error: function () {
+                alert("لطفا ترم را انتخاب نمایید");
+            }
+        });
+      
+  });
+        
+        
+         function showList(){
+
+         alert("inner showlist");
+          var  currentRow = $(this).closest("tr");
+          var  lessonid =  parseInt( $(currentRow).find('td:eq(2)').html());
+          document.getElementById("thisLessonIdHidden").innerHTML = lessonid;
+          var  termid =  parseInt($('#termsel').val());
+          var  techerid =  parseInt($('#teachersel').val());
+          
+          alert(termid+1 +"");
+         
+        
+        $.ajax({
+            url: "/headOfDepartment/showStudentsajax",
+            type:'POST',
+            dataType: 'json',
+            data: {
+                'lessonidOut' : lessonid ,
+                'termidOut' : termid ,
+                'techeridOut' : techerid 
+             },
+            success: function (response) {
+                
+                alert("success");
+                $('#responseImg').fadeIn('slow').delay(1000).fadeOut('slow');
+                $('body').css('overflow','hidden');
+                $('#listWrapper').delay(2000).fadeIn('fast');
+                
+                $("#studentTable").find("tr:gt(0)").remove();
+                
+                var table = document.getElementById("studentTable");
+                var count = 1;
+                $.each(response, function() {
+                    
+                   // document.getElementById("h22").innerHTML= this.fName;
+                   
+                    var row = table.insertRow(-1);
+                           
+                    var counter = row.insertCell(0);
+                    counter.setAttribute("id", "counter");
+                    
+                    var fName = row.insertCell(1);
+                    fName.setAttribute("id", "fName");
+                    var lName = row.insertCell(2);
+                    lName.setAttribute("id", "lName");
+                    
+                    var code = row.insertCell(3);
+                    code.setAttribute("id", "code");
+                    
+                    var lastmark = row.insertCell(4);
+                    code.setAttribute("id", "code");
+                    
+                    var mark = row.insertCell(5);
+                    //mark.setAttribute("id", "mark");
+                  
+                   
+                    
+                    counter.innerHTML = count ++;
+                    fName.innerHTML = this.fname;
+                    lName.innerHTML = this.lname;
+                    code.innerHTML = this.code;
+                    lastmark.innerHTML = this.mark;
+                    
+                    var b = document.createElement("input");
+                    b.type = 'number';
+                    b.class="mark";
+                    b.max="20";
+                    b.min="0";    
+                
+                    mark.appendChild(b);
+                    
+                   
+             });
+                                  
+            },
+             error: function () {
+                 
+               alert("fail");
+
+            }
+        });
+      }
+      
+      $('#submitMarks').click(function (e) {
+            var  techerid =  parseInt($('#teachersel').val());
+            var  tid = parseInt($('#termsel').val());
+            var st = [];
+            var tr = [];
+            var teacherId = [];
+            var ls = [];
+            var mr = [];
+            var m;
+            var thisLessonId = document.getElementById("thisLessonIdHidden").innerHTML;            
+            var table = document.getElementById("studentTable");           
+            var rows = table.rows;
+            for (var i = 1 ; i< rows.length ; i++) {
+                m = rows[i].cells[5].children[0].value; //if  not null so post to server
+                if( m >= 0  )
+                {
+                    
+                    tr[i-1] = tid;
+                    st[i-1] = rows[i].cells[3].innerHTML.toString();
+                    ls[i-1] = thisLessonId.toString();
+                    mr[i-1] = m;
+                    teacherId[i-1] = techerid;
+                }
+            }
+          
+            var MarkList = { termid: tr , studentId: st , mark: mr ,  thisLessonId : ls , techerid : teacherId };
+                   
+           $.ajax({             
+                type: 'POST',
+                url: '/headOfDepartment/InsertMark',
+           
+                data: MarkList ,
+                success: function (response) { 
+                    alert("success :)) ");
+                    $('#responseImg').fadeIn('slow').delay(2000).fadeOut('slow');
+                    $('#textResponce').html("اطلاعات با موفقیت ثبت شد.");
+                    $('#responseWrapper').delay(3000).fadeIn('fast').delay(2000).fadeOut('slow');
+                },
+                error: function () {
+                     alert("fail");
+                }       
+             });                       
+        });
+      
+      
+      
+
+  
+        $('.closeBtn').click(function () {
+
+            $(this).closest('.close').fadeOut('slow');
 
 
         });
+
+        $('.closeModal').click(function () {
+
+            $(this).closest('.close').fadeOut('slow');
+            $('body').css('overflow','auto');
+            $('#listWrapper .WrapperTableInfo').fadeOut('fast');
+
+        });
+
+        $(window).on('resize', function (){
+
+            if( $(window).width() > 760 ){
+
+                $('.moreInfoTd').css("display" , "none");
+
+            }
+            else{
+
+                $('.moreInfoTr').css("display" , "none");
+            }
+        });
+
+        $('.moreInfoButtonClass').click(  function(){
+
+
+            if( $(window).width() > 760 ){
+
+
+                //$(this).closest("tr").next().css("display", "table-row");
+                $(this).closest("tr").next().fadeIn('slow');
+            }
+            else {
+
+                // $(this).closest("td").next().css("display", "block");
+                $(this).closest("td").next().fadeIn('slow');
+
+            }
+
+
+
+        });
+        
+        
 
     });
 
